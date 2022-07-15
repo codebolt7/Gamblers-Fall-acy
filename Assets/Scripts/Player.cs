@@ -6,11 +6,22 @@ public class Player : MonoBehaviour
 {
     Controls controls;
     Rigidbody2D rb;
+
+    [Header("Movement")]
     [SerializeField] float speed = 5f;
+
+    [Header("Attack")]
+    [SerializeField] GameObject attack;
+    [SerializeField] float attackDistance = 1;
+
+    [Header("Animations")]
+    [SerializeField] SpriteRenderer spriteTop;
+    [SerializeField] SpriteRenderer spriteBottom;
 
     void Awake()
     {
         controls = new Controls();
+        controls.Player.Attack.performed += _ => Attack();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -28,7 +39,19 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = controls.Player.Move.ReadValue<Vector2>() * speed;
+        Vector2 input = controls.Player.Move.ReadValue<Vector2>();
+        rb.velocity = input * speed;
+        Debug.Log(input);
+        spriteBottom.flipX = input.x > 0;
+    }
+
+    private void Attack()
+    {
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>());
+        Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized;
+
+        attack.transform.position = relativePos * attackDistance + (Vector2)transform.position;
+        spriteTop.flipX = relativePos.x > 0;
     }
 
     void OnEnable()
