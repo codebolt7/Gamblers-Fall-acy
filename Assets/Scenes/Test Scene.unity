@@ -248,10 +248,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -590,7 +590,7 @@ Transform:
   m_GameObject: {fileID: 1214889333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.31, y: -0.01, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1230102635}
@@ -628,7 +628,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.03387925}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -639,7 +639,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.34782174, y: 0.84752494}
   m_EdgeRadius: 0
 --- !u!50 &1230102632
 Rigidbody2D:
@@ -674,11 +674,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35269370fbc1baa499391af7c332087a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   attack: {fileID: 1214889333}
-  attackDistance: 1
   spriteTop: {fileID: 1300783958}
   spriteBottom: {fileID: 1436775468}
+  speed: 5
+  attackDistance: 0.25
+  frameDelay: 0.1
+  animIdleTop:
+  - {fileID: 21300000, guid: e21a8814ff3ed1745b6ad39c4e2d8bd0, type: 3}
+  animIdleBottom:
+  - {fileID: 21300000, guid: acfad6e4efda9cc4397436720c49548a, type: 3}
+  animWalkTop:
+  - {fileID: -885957955, guid: 67b7424162de5124eaa6e5af1534a324, type: 3}
+  - {fileID: 2126812998, guid: 67b7424162de5124eaa6e5af1534a324, type: 3}
+  - {fileID: -1913977051, guid: 67b7424162de5124eaa6e5af1534a324, type: 3}
+  - {fileID: 2056445845, guid: 67b7424162de5124eaa6e5af1534a324, type: 3}
+  - {fileID: 701983231, guid: 67b7424162de5124eaa6e5af1534a324, type: 3}
+  - {fileID: 2092414658, guid: 67b7424162de5124eaa6e5af1534a324, type: 3}
+  animWalkBottom:
+  - {fileID: -1497388276, guid: b568e97b1f17cd644bfcb4b90c4542ba, type: 3}
+  - {fileID: 875887836, guid: b568e97b1f17cd644bfcb4b90c4542ba, type: 3}
+  - {fileID: -1808805646, guid: b568e97b1f17cd644bfcb4b90c4542ba, type: 3}
+  - {fileID: -1858696579, guid: b568e97b1f17cd644bfcb4b90c4542ba, type: 3}
+  - {fileID: 462373335, guid: b568e97b1f17cd644bfcb4b90c4542ba, type: 3}
+  - {fileID: -2072905691, guid: b568e97b1f17cd644bfcb4b90c4542ba, type: 3}
+  animAttackTop:
+  - {fileID: -1227201244, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
+  - {fileID: -1656744936, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
+  - {fileID: 37330820, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
+  - {fileID: 244591021, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
+  - {fileID: 51090242, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
+  - {fileID: 752988641, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
 --- !u!4 &1230102635
 Transform:
   m_ObjectHideFlags: 0
