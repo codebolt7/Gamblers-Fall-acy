@@ -90,11 +90,10 @@ public class Player : MonoBehaviour
         else
         {
             spriteBottom.sprite = animIdleBottom[idleFrameIndex];
-            spriteBottom.flipX = input.x > 0;
             if (!attacking)
             {
                 spriteTop.sprite = animIdleTop[idleFrameIndex];
-                spriteTop.flipX = input.x > 0;
+                spriteTop.flipX = spriteBottom.flipX;
             }
         }
     }
