@@ -31,7 +31,7 @@ public class BoneProjectile : MonoBehaviour
     {
         this.player = player;
         this.attackDmg = attackDmg;
-        velocity = (player.transform.position - transform.position).normalized * 7f;
+        velocity = (player.transform.position - transform.position).normalized * 3f;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

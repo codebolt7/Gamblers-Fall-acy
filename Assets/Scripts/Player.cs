@@ -146,6 +146,11 @@ public class Player : MonoBehaviour
                         enemyS.GetDamaged(attackDmg);
                         Debug.Log("Test");
                     }
+                    else if (collider.TryGetComponent(out EnemySpider enemySp))
+                    {
+                        enemySp.GetDamaged(attackDmg);
+                        Debug.Log("Test");
+                    }
                 }
             } 
             else if (i > 1)
