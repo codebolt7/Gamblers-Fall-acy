@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2057a6d22cbb4bc4a940e839c9a50a02
+guid: 62c7886e67732024fa4f2580e4491ab8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bat Fly-Sheet_0
+      name: Skeleton Walk-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bd223685b5fec849bb1e08b9a2ca964
-      internalID: 80803072
+      spriteID: 86d642e17deb0724ab0cb119e916a08a
+      internalID: 370888715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_1
+      name: Skeleton Walk-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47d6be9ff2e30b045b3718543216c7d6
-      internalID: 1195825425
+      spriteID: d341d36fb8ec70f44887a2f76ef6e8ff
+      internalID: -2009767312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_2
+      name: Skeleton Walk-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8808343e126dbf840a4563090a30e393
-      internalID: 294539313
+      spriteID: 5460bd599c1540c44ab13c61a12ada26
+      internalID: -483174394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_3
+      name: Skeleton Walk-Sheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26270624ad51fd74db11ae342dc48e5f
-      internalID: 1219374123
+      spriteID: d89c02f017b5ba54ead12e7b89a4db9e
+      internalID: 37978822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_4
+      name: Skeleton Walk-Sheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -214,8 +214,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbd5fdc9d9d13c54882d0242940c994e
-      internalID: 534756120
+      spriteID: 6413c88457d9fbf47b7b376d068537b2
+      internalID: -86982520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Walk-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13ff94b25e6018f499e38c2a22081e82
+      internalID: 314794127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Walk-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1325c8c2d5a63294baa0cd93812fd0ad
+      internalID: 1776195223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Walk-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ee8a6946432fc46a6cb6dfcf8b73df
+      internalID: -225358433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Walk-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2459d91548a24f246b8a252fc1b30227
+      internalID: 1666507308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Walk-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd91f27ae8afdcb41b68dcd981f47b93
+      internalID: -495118108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Walk-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7af362c65e49084191f4ae68c03f57a
+      internalID: 869510008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Walk-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48621701b8731a94e8dd85806020f3dd
+      internalID: -300233825
       vertices: []
       indices: 
       edges: []
@@ -231,11 +378,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bat Fly-Sheet_4: 534756120
-      Bat Fly-Sheet_2: 294539313
-      Bat Fly-Sheet_0: 80803072
-      Bat Fly-Sheet_1: 1195825425
-      Bat Fly-Sheet_3: 1219374123
+      Skeleton Walk-Sheet_4: -86982520
+      Skeleton Walk-Sheet_11: -300233825
+      Skeleton Walk-Sheet_1: -2009767312
+      Skeleton Walk-Sheet_5: 314794127
+      Skeleton Walk-Sheet_6: 1776195223
+      Skeleton Walk-Sheet_8: 1666507308
+      Skeleton Walk-Sheet_7: -225358433
+      Skeleton Walk-Sheet_10: 869510008
+      Skeleton Walk-Sheet_9: -495118108
+      Skeleton Walk-Sheet_0: 370888715
+      Skeleton Walk-Sheet_2: -483174394
+      Skeleton Walk-Sheet_3: 37978822
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

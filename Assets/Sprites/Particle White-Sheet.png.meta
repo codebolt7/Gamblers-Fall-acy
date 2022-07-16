@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2057a6d22cbb4bc4a940e839c9a50a02
+guid: 76e5241ad576cde4cbcc65c25fe583eb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bat Fly-Sheet_0
+      name: Particle White-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bd223685b5fec849bb1e08b9a2ca964
-      internalID: 80803072
+      spriteID: aab32703727a96b4b93f9d15e0d16a66
+      internalID: 865511196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_1
+      name: Particle White-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57298ebf31a787b42b73c0c7be7df30e
+      internalID: -500144829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle White-Sheet_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +172,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47d6be9ff2e30b045b3718543216c7d6
-      internalID: 1195825425
+      spriteID: 6dc39f91cf7eb32428cc8a75035e1d77
+      internalID: 1667562472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_2
+      name: Particle White-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aef8ce45b32ba245a67f0bdd5c2f933
+      internalID: 1861101232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle White-Sheet_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +214,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8808343e126dbf840a4563090a30e393
-      internalID: 294539313
+      spriteID: dc7f11371a710f243bda52fb3860fbda
+      internalID: 485378652
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_3
+      name: Particle White-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c62f9524c842ed54d8d14a9032813373
+      internalID: -229767878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle White-Sheet_6
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26270624ad51fd74db11ae342dc48e5f
-      internalID: 1219374123
+      spriteID: b2c2a4b59547bb34988096e71f2fe83c
+      internalID: -1286702854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_4
+      name: Particle White-Sheet_7
       rect:
         serializedVersion: 2
-        x: 128
+        x: 112
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,8 +277,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbd5fdc9d9d13c54882d0242940c994e
-      internalID: 534756120
+      spriteID: b9bfaf7c481d9f0489b6b7d34bac8a48
+      internalID: 2129591919
       vertices: []
       indices: 
       edges: []
@@ -231,11 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bat Fly-Sheet_4: 534756120
-      Bat Fly-Sheet_2: 294539313
-      Bat Fly-Sheet_0: 80803072
-      Bat Fly-Sheet_1: 1195825425
-      Bat Fly-Sheet_3: 1219374123
+      Particle White-Sheet_3: 1861101232
+      Particle White-Sheet_5: -229767878
+      Particle White-Sheet_1: -500144829
+      Particle White-Sheet_7: 2129591919
+      Particle White-Sheet_6: -1286702854
+      Particle White-Sheet_0: 865511196
+      Particle White-Sheet_2: 1667562472
+      Particle White-Sheet_4: 485378652
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

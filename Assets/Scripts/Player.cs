@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject attack;
     [SerializeField] SpriteRenderer spriteTop;
     [SerializeField] SpriteRenderer spriteBottom;
+    [SerializeField] ContactFilter2D attackContactFilter;
 
-    [Header("Movement")]
+    [Header("Stats")]
+    [SerializeField] float attackDmg = 1f;
     [SerializeField] float speed = 5f;
-
-    [Header("Attack")]
+    [SerializeField] float maxHP = 5f;
     [SerializeField] float attackDistance = 1;
+    [SerializeField] float immunityDuration = 2;
 
     [Header("Object Assignment")]
     [SerializeField] float frameDelay;
@@ -28,13 +30,17 @@ public class Player : MonoBehaviour
     [SerializeField] Sprite[] animWalkTop;
     [SerializeField] Sprite[] animWalkBottom;
     [SerializeField] Sprite[] animAttackTop;
+    [SerializeField] Sprite[] animSwingFX;
 
+    private float hp;
     bool attacking;
+    bool immunity;
 
     void Awake()
     {
         controls = new Controls();
         controls.Player.Attack.performed += _ => StartCoroutine(Attack());
+        attack.transform.SetParent(transform.parent);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -101,16 +107,60 @@ public class Player : MonoBehaviour
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>());
         Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized;
 
-        attack.transform.position = relativePos * attackDistance + (Vector2)transform.position;
         spriteTop.flipX = relativePos.x > 0;
 
+        attack.transform.position = relativePos * attackDistance + (Vector2)transform.position;
+        attack.transform.right = transform.position - attack.transform.position;
+
+        int i = 0;
         foreach (Sprite frame in animAttackTop)
         {
+            SpriteRenderer attackSR = attack.GetComponent<SpriteRenderer>();
+            if (i == 1)
+            {
+                attack.SetActive(true);
+                attackSR.sprite = animSwingFX[0];
+
+                List<Collider2D> hits = new List<Collider2D>();
+                attack.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hits);
+                foreach (Collider2D collider in hits)
+                {
+                    if (collider.TryGetComponent(out Enemy enemy))
+                    {
+                        enemy.GetDamaged(attackDmg);
+                    }
+                }
+            } 
+            else if (i > 1)
+            {
+                attackSR.sprite = animSwingFX[i - 1];
+            }
+            i++;
+
             spriteTop.sprite = frame;
             yield return new WaitForSeconds(frameDelay);
         }
 
+        attack.SetActive(false);
         attacking = false;
+    }
+
+    public void GetDamaged(float damage)
+    {
+        if (immunity) return;
+        hp -= damage;
+        StartCoroutine(Immunity());
+    }
+
+    private IEnumerator Immunity()
+    {
+        immunity = true;
+        spriteTop.color = new Color(1, 1, 1, 0.5f);
+        spriteBottom.color = new Color(1, 1, 1, 0.5f);
+        yield return new WaitForSeconds(immunityDuration);
+        immunity = false;
+        spriteTop.color = new Color(1, 1, 1, 1);
+        spriteBottom.color = new Color(1, 1, 1, 1);
     }
 
     void OnEnable()

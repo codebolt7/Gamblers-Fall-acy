@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2057a6d22cbb4bc4a940e839c9a50a02
+guid: cc5b032a65a948c4882d19f7b7505859
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bat Fly-Sheet_0
+      name: Die-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bd223685b5fec849bb1e08b9a2ca964
-      internalID: 80803072
+      spriteID: 5a95402287a8624439eb3dfda3dff98c
+      internalID: -2027013660
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_1
+      name: Die-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d75cd22bb428b73449ef0cb6058e97bc
+      internalID: -1098129994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Die-Sheet_2
       rect:
         serializedVersion: 2
         x: 32
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +172,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47d6be9ff2e30b045b3718543216c7d6
-      internalID: 1195825425
+      spriteID: 33d3f57e7cd32e24da29f1b26d345b3c
+      internalID: 508536911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_2
+      name: Die-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4d24fc7cd7af34698482511cdb0927
+      internalID: -1888938012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Die-Sheet_4
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8808343e126dbf840a4563090a30e393
-      internalID: 294539313
+      spriteID: 541b3590d3d351a4694ec53b686ab601
+      internalID: 1325274708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_3
+      name: Die-Sheet_5
       rect:
         serializedVersion: 2
-        x: 96
+        x: 80
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,29 +235,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26270624ad51fd74db11ae342dc48e5f
-      internalID: 1219374123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bat Fly-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cbd5fdc9d9d13c54882d0242940c994e
-      internalID: 534756120
+      spriteID: 4808391092f58624ea8ddebb7fa1d64c
+      internalID: 1679773084
       vertices: []
       indices: 
       edges: []
@@ -231,11 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bat Fly-Sheet_4: 534756120
-      Bat Fly-Sheet_2: 294539313
-      Bat Fly-Sheet_0: 80803072
-      Bat Fly-Sheet_1: 1195825425
-      Bat Fly-Sheet_3: 1219374123
+      Die-Sheet_0: -2027013660
+      Die-Sheet_5: 1679773084
+      Die-Sheet_4: 1325274708
+      Die-Sheet_2: 508536911
+      Die-Sheet_3: -1888938012
+      Die-Sheet_1: -1098129994
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

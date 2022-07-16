@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2057a6d22cbb4bc4a940e839c9a50a02
+guid: 71f6af231a17bbb4faa013f6ebe9f83f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bat Fly-Sheet_0
+      name: Skeleton Throw-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bd223685b5fec849bb1e08b9a2ca964
-      internalID: 80803072
+      spriteID: f280d85592aa7c244abb1890bf7cd5b5
+      internalID: 373822293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_1
+      name: Skeleton Throw-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47d6be9ff2e30b045b3718543216c7d6
-      internalID: 1195825425
+      spriteID: 258aaabdcd7db3f48be867f289eeee3a
+      internalID: 1387574422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_2
+      name: Skeleton Throw-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8808343e126dbf840a4563090a30e393
-      internalID: 294539313
+      spriteID: 1e38e37c8efc65446b7ee409e039b9f4
+      internalID: 838500229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_3
+      name: Skeleton Throw-Sheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26270624ad51fd74db11ae342dc48e5f
-      internalID: 1219374123
+      spriteID: 91763649db4224447ba82d6531aa1be2
+      internalID: -802806160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bat Fly-Sheet_4
+      name: Skeleton Throw-Sheet_4
       rect:
         serializedVersion: 2
         x: 128
@@ -214,8 +214,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbd5fdc9d9d13c54882d0242940c994e
-      internalID: 534756120
+      spriteID: f98b8c99f16a91b46a584a6c93c8ac80
+      internalID: -41846709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Throw-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05f5cb94fc5aba458dfac1083e4ca26
+      internalID: 1400577927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Throw-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7649ab82e20fde4eb5517693056c5e8
+      internalID: -1619825330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skeleton Throw-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa6c116485d89894d99eef1eb85fa0cb
+      internalID: -1276246168
       vertices: []
       indices: 
       edges: []
@@ -231,11 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bat Fly-Sheet_4: 534756120
-      Bat Fly-Sheet_2: 294539313
-      Bat Fly-Sheet_0: 80803072
-      Bat Fly-Sheet_1: 1195825425
-      Bat Fly-Sheet_3: 1219374123
+      Skeleton Throw-Sheet_4: -41846709
+      Skeleton Throw-Sheet_6: -1619825330
+      Skeleton Throw-Sheet_0: 373822293
+      Skeleton Throw-Sheet_7: -1276246168
+      Skeleton Throw-Sheet_2: 838500229
+      Skeleton Throw-Sheet_5: 1400577927
+      Skeleton Throw-Sheet_1: 1387574422
+      Skeleton Throw-Sheet_3: -802806160
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
