@@ -89,6 +89,60 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dice1"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0bf2d38-c8b3-465a-951c-207437ef030e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dice2"",
+                    ""type"": ""Button"",
+                    ""id"": ""85a5b242-e338-44bf-981d-ca88938dae7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dice3"",
+                    ""type"": ""Button"",
+                    ""id"": ""c08fc8d2-359e-4cc2-ab97-6025c24a3b43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dice4"",
+                    ""type"": ""Button"",
+                    ""id"": ""a16b1890-b029-438f-a688-1ab120b6e895"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dice5"",
+                    ""type"": ""Button"",
+                    ""id"": ""527525e4-d38a-4bbf-b352-fc3b696ddc00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dice6"",
+                    ""type"": ""Button"",
+                    ""id"": ""83122141-2a7f-4d4b-b1f3-15b539219185"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -267,6 +321,72 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Fireball"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""421c8ad3-4528-4144-87d1-7e3dc9415c3a"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dice1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abcb4720-4c9f-4c70-b292-ee87d1599c1c"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dice2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""213469db-8b50-4543-922e-08e6d7fa7048"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dice3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52ec9a00-f0c4-4ff5-9c6a-dd17548169e7"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dice4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70efbc8f-f78a-465b-8148-e81410c5616a"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dice5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f4b8b90-19c4-4403-b145-543f8cba6e83"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dice6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -282,6 +402,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
         m_Player_Shockwave = m_Player.FindAction("Shockwave", throwIfNotFound: true);
         m_Player_Fireball = m_Player.FindAction("Fireball", throwIfNotFound: true);
+        m_Player_Dice1 = m_Player.FindAction("Dice1", throwIfNotFound: true);
+        m_Player_Dice2 = m_Player.FindAction("Dice2", throwIfNotFound: true);
+        m_Player_Dice3 = m_Player.FindAction("Dice3", throwIfNotFound: true);
+        m_Player_Dice4 = m_Player.FindAction("Dice4", throwIfNotFound: true);
+        m_Player_Dice5 = m_Player.FindAction("Dice5", throwIfNotFound: true);
+        m_Player_Dice6 = m_Player.FindAction("Dice6", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -348,6 +474,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Shield;
     private readonly InputAction m_Player_Shockwave;
     private readonly InputAction m_Player_Fireball;
+    private readonly InputAction m_Player_Dice1;
+    private readonly InputAction m_Player_Dice2;
+    private readonly InputAction m_Player_Dice3;
+    private readonly InputAction m_Player_Dice4;
+    private readonly InputAction m_Player_Dice5;
+    private readonly InputAction m_Player_Dice6;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -359,6 +491,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Shield => m_Wrapper.m_Player_Shield;
         public InputAction @Shockwave => m_Wrapper.m_Player_Shockwave;
         public InputAction @Fireball => m_Wrapper.m_Player_Fireball;
+        public InputAction @Dice1 => m_Wrapper.m_Player_Dice1;
+        public InputAction @Dice2 => m_Wrapper.m_Player_Dice2;
+        public InputAction @Dice3 => m_Wrapper.m_Player_Dice3;
+        public InputAction @Dice4 => m_Wrapper.m_Player_Dice4;
+        public InputAction @Dice5 => m_Wrapper.m_Player_Dice5;
+        public InputAction @Dice6 => m_Wrapper.m_Player_Dice6;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -389,6 +527,24 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fireball.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireball;
                 @Fireball.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireball;
                 @Fireball.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireball;
+                @Dice1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice1;
+                @Dice1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice1;
+                @Dice1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice1;
+                @Dice2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice2;
+                @Dice2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice2;
+                @Dice2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice2;
+                @Dice3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice3;
+                @Dice3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice3;
+                @Dice3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice3;
+                @Dice4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice4;
+                @Dice4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice4;
+                @Dice4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice4;
+                @Dice5.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice5;
+                @Dice5.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice5;
+                @Dice5.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice5;
+                @Dice6.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice6;
+                @Dice6.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice6;
+                @Dice6.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDice6;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -414,6 +570,24 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Fireball.started += instance.OnFireball;
                 @Fireball.performed += instance.OnFireball;
                 @Fireball.canceled += instance.OnFireball;
+                @Dice1.started += instance.OnDice1;
+                @Dice1.performed += instance.OnDice1;
+                @Dice1.canceled += instance.OnDice1;
+                @Dice2.started += instance.OnDice2;
+                @Dice2.performed += instance.OnDice2;
+                @Dice2.canceled += instance.OnDice2;
+                @Dice3.started += instance.OnDice3;
+                @Dice3.performed += instance.OnDice3;
+                @Dice3.canceled += instance.OnDice3;
+                @Dice4.started += instance.OnDice4;
+                @Dice4.performed += instance.OnDice4;
+                @Dice4.canceled += instance.OnDice4;
+                @Dice5.started += instance.OnDice5;
+                @Dice5.performed += instance.OnDice5;
+                @Dice5.canceled += instance.OnDice5;
+                @Dice6.started += instance.OnDice6;
+                @Dice6.performed += instance.OnDice6;
+                @Dice6.canceled += instance.OnDice6;
             }
         }
     }
@@ -427,5 +601,11 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnShield(InputAction.CallbackContext context);
         void OnShockwave(InputAction.CallbackContext context);
         void OnFireball(InputAction.CallbackContext context);
+        void OnDice1(InputAction.CallbackContext context);
+        void OnDice2(InputAction.CallbackContext context);
+        void OnDice3(InputAction.CallbackContext context);
+        void OnDice4(InputAction.CallbackContext context);
+        void OnDice5(InputAction.CallbackContext context);
+        void OnDice6(InputAction.CallbackContext context);
     }
 }

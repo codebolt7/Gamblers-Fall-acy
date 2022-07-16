@@ -11,6 +11,7 @@ public class BattleUI : MonoBehaviour
     int initHealth = 4;
 
     // Every UI element that will be changed
+    private VisualElement healthbar;
     private IMGUIContainer currentHealth, healthbarFill;
     private IMGUIContainer[] dice = new IMGUIContainer[7]; // 0th element is null just so indices match dice num
     private bool[] diceVals = {false, false, false, false, false, false, false};
@@ -29,6 +30,10 @@ public class BattleUI : MonoBehaviour
     bool dieGrabbed = false;
     int grabbedDieVal = 0;
     float dieShakeTimer = 0f;
+    int abilityNumShake = -1;
+
+    int currentHealthVal = 8;
+    float healthShakeTimer = 0f;
 
     Controls controls;
     void Awake()
@@ -41,11 +46,6 @@ public class BattleUI : MonoBehaviour
         controls.Player.Dice4.performed += _ => DiceGrab(4);
         controls.Player.Dice5.performed += _ => DiceGrab(5);
         controls.Player.Dice6.performed += _ => DiceGrab(6);
-    }
-
-    void test()
-    {
-        Debug.Log("ouchie");
     }
 
     void DiceGrab(int diceNum)
@@ -70,6 +70,7 @@ public class BattleUI : MonoBehaviour
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
+        healthbar = rootVisualElement.Q<VisualElement>("HealthBar");
         currentHealth = rootVisualElement.Q<IMGUIContainer>("CurrentHealth");
         healthbarFill = rootVisualElement.Q<IMGUIContainer>("Fill");
 
@@ -97,13 +98,13 @@ public class BattleUI : MonoBehaviour
         abilityCharges[3] = rootVisualElement.Q<IMGUIContainer>("ShieldCharge");
 
         abilityButtons[0] = rootVisualElement.Q<Button>("DashButton");
-        abilityButtons[0].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDie(0));
+        abilityButtons[0].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDieAbility(0));
         abilityButtons[1] = rootVisualElement.Q<Button>("FireballButton");
-        abilityButtons[1].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDie(1));
+        abilityButtons[1].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDieAbility(1));
         abilityButtons[2] = rootVisualElement.Q<Button>("RepelButton");
-        abilityButtons[2].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDie(2));
+        abilityButtons[2].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDieAbility(2));
         abilityButtons[3] = rootVisualElement.Q<Button>("ShieldButton");
-        abilityButtons[3].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDie(3));
+        abilityButtons[3].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDieAbility(3));
 
         grabbedDie = rootVisualElement.Q<IMGUIContainer>("GrabbedDie");
 
@@ -124,24 +125,25 @@ public class BattleUI : MonoBehaviour
         else
         {
             if (newHealthVal < 0) newHealthVal = 0; // clamp to 0
+            if (newHealthVal < currentHealthVal)
+            {
+                healthShakeTimer = 0.5f;
+            }
 
             healthbarFill.style.width = 176 * newHealthVal / maxHealth;
             currentHealth.style.backgroundImage = new StyleBackground(healthNums[newHealthVal]);
+            currentHealthVal = newHealthVal;
         }
     }
 
-    private void HealthShake()
-    {
-
-    }
-
-    private void ResolveHeldDie(int abilityNum)
+    private void ResolveHeldDieAbility(int abilityNum)
     {
         Debug.Log("hey");
         if (dieGrabbed)
             if (chargeVals[abilityNum] >= 9) // if ability is fully charged, reject die
             {
                 dieShakeTimer = 0.5f;
+                abilityNumShake = abilityNum;
                 // error sound?
             }
             else
@@ -241,10 +243,28 @@ public class BattleUI : MonoBehaviour
             {
                 grabbedDie.style.left = new StyleLength(Random.insideUnitSphere.x * 10f + grabbedDie.style.left.value.value);
                 grabbedDie.style.bottom = new StyleLength(Random.insideUnitSphere.y * 10f + grabbedDie.style.bottom.value.value);
+                abilityCharges[abilityNumShake].style.top = new StyleLength(Random.insideUnitSphere.y * 5f + 34);
                 dieShakeTimer -= Time.deltaTime;
             }
             else
+            {
                 dieShakeTimer = 0f;
+                if (abilityNumShake >= 0 && abilityNumShake <= 3)
+                    abilityCharges[abilityNumShake].style.top = 34;
+            }
+        }
+
+        if (healthShakeTimer > 0)
+        {
+            healthbar.style.left = new StyleLength(Random.insideUnitSphere.x * 10f);
+            healthbar.style.top = new StyleLength(Random.insideUnitSphere.y * 10f);
+            healthShakeTimer -= Time.deltaTime;
+        }
+        else
+        {   
+            healthbar.style.left = 0;
+            healthbar.style.top = 0;
+            healthShakeTimer = 0f;
         }
     }
 }
