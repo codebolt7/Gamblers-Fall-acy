@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
                 attack.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hits);
                 foreach (Collider2D collider in hits)
                 {
-                    if (collider.TryGetComponent(out Enemy enemy))
+                    if (collider.TryGetComponent(out EnemyBat enemy))
                     {
                         enemy.GetDamaged(attackDmg);
                     }
