@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{060d8fa5-905b-4be9-b43f-e92e56da0396}">
+		<property name="assetPath">
+			<value>DiceRollSemisharp.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.75893424036281176</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{20ef7d41-5da3-48c5-bd89-1ebd947eee49}</destination>
+		</relationship>
+	</object>
+</objects>
