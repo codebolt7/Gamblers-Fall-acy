@@ -18,6 +18,11 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float maxHP = 5f;
     [SerializeField] float attackDistance = 1;
+    [SerializeField] float dashDuration = 0.1f;
+    [SerializeField] float dashLength = 3.5f;//originally 3.5 units
+    [SerializeField] float hitImmunityDuration = 2;
+    [SerializeField] float dashImmunityDuration = 0.1f;
+    [SerializeField] float fortuneImmunityDuration = 2.5f;
     [SerializeField] float immunityDuration = 2;
 
     [Header("Object Assignment")]
@@ -34,12 +39,16 @@ public class Player : MonoBehaviour
 
     private float hp;
     bool attacking;
+    bool dashing;
     bool immunity;
 
     void Awake()
     {
         controls = new Controls();
         controls.Player.Attack.performed += _ => StartCoroutine(Attack());
+        controls.Player.Dash.performed += _ => StartCoroutine(Dash());
+        controls.Player.Shield.performed += _ => StartCoroutine(Shield());
+        dashing = false;
         attack.transform.SetParent(transform.parent);
         rb = GetComponent<Rigidbody2D>();
     }
@@ -59,7 +68,8 @@ public class Player : MonoBehaviour
     private void Move()
     {
         Vector2 input = controls.Player.Move.ReadValue<Vector2>();
-        rb.velocity = input * speed;
+        
+        if(!dashing) rb.velocity = input * speed;
 
         BaseAnimate(input);
     }
@@ -100,7 +110,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        if (attacking) yield break;
+        if (attacking) yield break; //The equivalent of return for an IEnumerator
         attacking = true;
 
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>());
@@ -149,10 +159,42 @@ public class Player : MonoBehaviour
         attacking = false;
     }
 
+    private IEnumerator Dash()
+    {
+        //Want a 4~frame invulnerable dash that travels 3.5~ in whatever 
+        //direction is pressed
+        dashing = true;
+        immunityDuration = dashImmunityDuration;
+        StartCoroutine(Immunity());
+        Vector2 currentVel = rb.velocity;
+        rb.velocity = rb.velocity*2*dashLength;
+        yield return new WaitForSeconds(dashDuration);
+        rb.velocity = currentVel;
+        dashing = false;
+    }
+
+    private IEnumerator Fireball()
+    {
+        yield break;
+    }
+
+    private IEnumerator Shockwave()
+    {
+        yield break;
+    }
+
+    private IEnumerator Shield()
+    {
+        immunityDuration = fortuneImmunityDuration;
+        StartCoroutine(Immunity());
+        yield return new WaitForSeconds(fortuneImmunityDuration);
+    }
+
     public void GetDamaged(float damage)
     {
         if (immunity) return;
         hp -= damage;
+        immunityDuration = hitImmunityDuration;
         StartCoroutine(Immunity());
     }
 
