@@ -17,6 +17,7 @@ public class EnemySkeleton : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     GameObject player;
     SpriteRenderer spriteRenderer;
+    [SerializeField] GameObject boneProjectile;
 
     [Header("Stats")]
     [SerializeField] float speed = 1;
@@ -24,11 +25,12 @@ public class EnemySkeleton : MonoBehaviour
     [SerializeField] float maxHP = 5f;
     [SerializeField] float pushbackForce = 30;
     [SerializeField] float stunDuration = 3;
-    [SerializeField] Vector2 attackCooldown;
+    [SerializeField] float attackChance;
 
     [Header("Animations")]
     [SerializeField] const float frameDelay = 0.1f;
     [SerializeField] Sprite[] animMove;
+    [SerializeField] Sprite[] animAttack;
     private int moveFrameIndex;
     private float moveTimer;
     private int attackFrameIndex;
@@ -36,7 +38,6 @@ public class EnemySkeleton : MonoBehaviour
 
     private float hp;
     private float stunTimer;
-    private float attackWaitTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,7 @@ public class EnemySkeleton : MonoBehaviour
                 Stunned();
                 break;
             case State.Attacking:
-                Stunned();
+                Attacking();
                 break;
             case State.Dead:
                 Dead();
@@ -99,6 +100,38 @@ public class EnemySkeleton : MonoBehaviour
         }
     }
 
+    private void Attacking()
+    {
+        spriteRenderer.sprite = animAttack[attackFrameIndex];
+        spriteRenderer.flipX = player.transform.position.x > transform.position.x;
+
+        attackTimer += Time.deltaTime;
+        if (attackTimer > frameDelay)
+        {
+            attackFrameIndex++;
+            attackTimer = 0;
+
+            if (attackFrameIndex >= animAttack.Length)
+            {
+                attackFrameIndex = 0;
+                state = State.Moving;
+            }
+
+            if (attackFrameIndex == 3)
+            {
+                SpawnAttack();
+            }
+        }
+    }
+
+    private void SpawnAttack()
+    {
+        Debug.Log("Skeleton Attacks");
+        GameObject projectile = Instantiate(boneProjectile);
+        projectile.transform.position = transform.position;
+        projectile.GetComponent<BoneProjectile>().Init(player.GetComponent<Player>(), attackDmg);
+    }
+
     private void Dead()
     {
         stunTimer -= Time.deltaTime;
@@ -117,6 +150,11 @@ public class EnemySkeleton : MonoBehaviour
         if (moveTimer > frameDelay)
         {
             moveFrameIndex = (moveFrameIndex + 1) % animMove.Length;
+            if (moveFrameIndex == 0 && Random.Range(0, 1.0f) <= attackChance)
+            {
+                rb.velocity = Vector2.zero;
+                state = State.Attacking;
+            }
             moveTimer = 0;
         }
     }
