@@ -80,6 +80,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fireball"",
+                    ""type"": ""Button"",
+                    ""id"": ""ef3cbc64-b837-412f-ac1d-282d19899d22"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +256,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Shockwave"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f0ea8ee-f163-4ae1-892f-2e4e3d088c2a"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fireball"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -261,6 +281,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
         m_Player_Shockwave = m_Player.FindAction("Shockwave", throwIfNotFound: true);
+        m_Player_Fireball = m_Player.FindAction("Fireball", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +347,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Shield;
     private readonly InputAction m_Player_Shockwave;
+    private readonly InputAction m_Player_Fireball;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -336,6 +358,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Shield => m_Wrapper.m_Player_Shield;
         public InputAction @Shockwave => m_Wrapper.m_Player_Shockwave;
+        public InputAction @Fireball => m_Wrapper.m_Player_Fireball;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -363,6 +386,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shockwave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
                 @Shockwave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
                 @Shockwave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
+                @Fireball.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireball;
+                @Fireball.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireball;
+                @Fireball.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFireball;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -385,6 +411,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shockwave.started += instance.OnShockwave;
                 @Shockwave.performed += instance.OnShockwave;
                 @Shockwave.canceled += instance.OnShockwave;
+                @Fireball.started += instance.OnFireball;
+                @Fireball.performed += instance.OnFireball;
+                @Fireball.canceled += instance.OnFireball;
             }
         }
     }
@@ -397,5 +426,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
         void OnShockwave(InputAction.CallbackContext context);
+        void OnFireball(InputAction.CallbackContext context);
     }
 }

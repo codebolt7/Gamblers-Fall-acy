@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] float attackDistance = 1;
     [SerializeField] float dashDuration = 0.1f;
     [SerializeField] float dashLength = 3.5f;//originally 3.5 units
+    [SerializeField] float fireballDamage = 1.5f;
     [SerializeField] float shockwaveKB = 1.5f;
     [SerializeField] float hitImmunityDuration = 2;
     [SerializeField] float dashImmunityDuration = 0.1f;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         controls = new Controls();
         controls.Player.Attack.performed += _ => StartCoroutine(Attack());
         controls.Player.Dash.performed += _ => StartCoroutine(Dash());
+        controls.Player.Fireball.performed += _ => StartCoroutine(Fireball());
         controls.Player.Shockwave.performed += _ => StartCoroutine(Shockwave());
         controls.Player.Shield.performed += _ => StartCoroutine(Shield());
         dashing = false;
@@ -183,6 +185,11 @@ public class Player : MonoBehaviour
 
     private IEnumerator Fireball()
     {
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>()); //Gets scrren position, converts to world position
+        Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized; // World position minus player position, then normalized
+        GameObject projectile = Instantiate(fireballProjectile);
+        projectile.transform.position = transform.position;
+        projectile.GetComponent<FireballProjectile>().Init(relativePos, fireballSpeed, fireballDamage);
         yield break;
     }
 
