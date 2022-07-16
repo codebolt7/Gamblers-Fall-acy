@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     [Header("Object Assignment")]
     [SerializeField] GameObject attack;
+    [SerializeField] GameObject shockwave;
     [SerializeField] SpriteRenderer spriteTop;
     [SerializeField] SpriteRenderer spriteBottom;
     [SerializeField] ContactFilter2D attackContactFilter;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] float attackDistance = 1;
     [SerializeField] float dashDuration = 0.1f;
     [SerializeField] float dashLength = 3.5f;//originally 3.5 units
+    [SerializeField] float shockwaveKB = 1.5f;
     [SerializeField] float hitImmunityDuration = 2;
     [SerializeField] float dashImmunityDuration = 0.1f;
     [SerializeField] float fortuneImmunityDuration = 2.5f;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
         controls = new Controls();
         controls.Player.Attack.performed += _ => StartCoroutine(Attack());
         controls.Player.Dash.performed += _ => StartCoroutine(Dash());
+        controls.Player.Shockwave.performed += _ => StartCoroutine(Shockwave());
         controls.Player.Shield.performed += _ => StartCoroutine(Shield());
         dashing = false;
         attack.transform.SetParent(transform.parent);
@@ -136,7 +139,7 @@ public class Player : MonoBehaviour
                 {
                     if (collider.TryGetComponent(out EnemyBat enemyB))
                     {
-                        enemyB.GetDamaged(attackDmg);
+                        enemyB.GetDamaged(attackDmg, 1);
                     }
                     else if (collider.TryGetComponent(out EnemySkeleton enemyS))
                     {
@@ -180,6 +183,23 @@ public class Player : MonoBehaviour
 
     private IEnumerator Shockwave()
     {
+        //Debug.Log("shockwave!");
+        List<Collider2D> hit = new List<Collider2D>();
+        shockwave.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hit);
+        foreach (Collider2D collider in hit)
+        {
+            Debug.Log(collider.name);
+            if (collider.TryGetComponent(out EnemyBat enemyB))
+            {
+                enemyB.GetDamaged(attackDmg/4, shockwaveKB);
+            }
+            else if (collider.TryGetComponent(out EnemySkeleton enemyS))
+            {
+                enemyS.GetDamaged(attackDmg/4);
+                //Need to add knockback function
+                Debug.Log("Test");
+            }
+        }
         yield break;
     }
 

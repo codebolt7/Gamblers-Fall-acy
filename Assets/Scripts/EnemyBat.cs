@@ -59,7 +59,7 @@ public class EnemyBat : MonoBehaviour
         }
     }
 
-    public void GetDamaged(float damage)
+    public void GetDamaged(float damage, float knockbackMultiplier)
     {
         hp -= damage;
         Debug.Log(gameObject.name + "'s HP: " + hp);
@@ -67,7 +67,7 @@ public class EnemyBat : MonoBehaviour
         state = State.Stunned;
         spriteRenderer.color = new Color(1, 1, 1, 0.5f);
         rb.velocity = Vector2.zero;
-        rb.AddForceAtPosition((transform.position - player.transform.position).normalized * pushbackForce, player.transform.position);
+        rb.AddForceAtPosition((transform.position - player.transform.position).normalized * pushbackForce *knockbackMultiplier, player.transform.position);
         if (hp <= 0)
         {
             spriteRenderer.color = new Color(1, 0f, 0f, 0.25f);
@@ -90,6 +90,10 @@ public class EnemyBat : MonoBehaviour
             state = State.Moving;
         }
     }
+
+    // private void knockback(){
+    //     rb.AddForceAtPosition((transform.position - player.transform.position).normalized * pushbackForce, player.transform.position);  
+    // }
 
     private void Dead()
     {

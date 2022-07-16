@@ -71,6 +71,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shockwave"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8d41172-4285-4c34-a205-dcc998660c4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +236,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Shield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be55956d-6c91-488c-aeb8-1142ea0406de"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shockwave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +260,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Player_MousePosition = m_Player.FindAction("Mouse Position", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Shield = m_Player.FindAction("Shield", throwIfNotFound: true);
+        m_Player_Shockwave = m_Player.FindAction("Shockwave", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +325,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Shield;
+    private readonly InputAction m_Player_Shockwave;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -313,6 +335,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Shield => m_Wrapper.m_Player_Shield;
+        public InputAction @Shockwave => m_Wrapper.m_Player_Shockwave;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -337,6 +360,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shield.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
                 @Shield.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
                 @Shield.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShield;
+                @Shockwave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
+                @Shockwave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
+                @Shockwave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShockwave;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -356,6 +382,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Shield.started += instance.OnShield;
                 @Shield.performed += instance.OnShield;
                 @Shield.canceled += instance.OnShield;
+                @Shockwave.started += instance.OnShockwave;
+                @Shockwave.performed += instance.OnShockwave;
+                @Shockwave.canceled += instance.OnShockwave;
             }
         }
     }
@@ -367,5 +396,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMousePosition(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
+        void OnShockwave(InputAction.CallbackContext context);
     }
 }
