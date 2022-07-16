@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:IMGUIContainer name="Background" style="width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Sprites/Temp/TempTitle.png?fileID=2800000&amp;guid=287494075e255044ab330d01ccd31d8e&amp;type=3#TempTitle&apos;);">
+        <ui:VisualElement name="Buttons" style="width: 50%; height: 92.5%; left: 2.5%; top: 2.5%; right: 2.5%; bottom: 2.5%;">
+            <ui:Button text="Play" display-tooltip-when-elided="true" name="PlayButton" enable-rich-text="true" style="left: 32%; top: 55%; width: 37.5%; height: 110px; font-size: 50%; bottom: 5px; right: 5px; padding-bottom: 10px;" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" enable-rich-text="true" style="left: 32%; top: 57.5%; width: 37.5%; height: 110px; font-size: 50%; bottom: 5px; right: 5px; padding-bottom: 10px;" />
+            <ui:Button text="Credits" display-tooltip-when-elided="true" name="CreditsButton" enable-rich-text="true" style="left: 32%; top: 60%; width: 37.5%; height: 110px; font-size: 50%; bottom: 5px; right: 5px; padding-bottom: 10px;" />
+        </ui:VisualElement>
+    </ui:IMGUIContainer>
+</ui:UXML>
