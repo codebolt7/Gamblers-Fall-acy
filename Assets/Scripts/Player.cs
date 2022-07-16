@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     [Header("Object Assignment")]
     [SerializeField] GameObject attack;
+    [SerializeField] GameObject fireballProjectile;
     [SerializeField] GameObject shockwave;
     [SerializeField] SpriteRenderer spriteTop;
     [SerializeField] SpriteRenderer spriteBottom;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] float attackDistance = 1;
     [SerializeField] float dashDuration = 0.1f;
     [SerializeField] float dashLength = 3.5f;//originally 3.5 units
+    [SerializeField] float fireballSpeed = 10.0f;
     [SerializeField] float fireballDamage = 1.5f;
     [SerializeField] float shockwaveKB = 1.5f;
     [SerializeField] float hitImmunityDuration = 2;
