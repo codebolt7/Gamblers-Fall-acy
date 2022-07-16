@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3a1a099f-3c7e-422e-b806-e5b53dfa697f}">
+		<property name="assetPath">
+			<value>Bat_WingFlap.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.5714285714285714</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{20ef7d41-5da3-48c5-bd89-1ebd947eee49}</destination>
+		</relationship>
+	</object>
+</objects>
