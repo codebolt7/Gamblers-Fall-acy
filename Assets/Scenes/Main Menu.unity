@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 977681896}
   - component: {fileID: 977681898}
   m_Layer: 5
-  m_Name: UIDocument
+  m_Name: MenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,6 +261,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9e6774881c91c4185d56ea50419024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonSprites:
+  - {fileID: 478345823, guid: 0704a14ae00474e4c9bcf3ff6f1dc471, type: 3}
+  - {fileID: -1230240960, guid: 0704a14ae00474e4c9bcf3ff6f1dc471, type: 3}
+  - {fileID: -670147450, guid: 0704a14ae00474e4c9bcf3ff6f1dc471, type: 3}
+  - {fileID: -1156227363, guid: 0704a14ae00474e4c9bcf3ff6f1dc471, type: 3}
+  - {fileID: -348271032, guid: 0704a14ae00474e4c9bcf3ff6f1dc471, type: 3}
+  - {fileID: 1221458225, guid: 0704a14ae00474e4c9bcf3ff6f1dc471, type: 3}
+  - {fileID: -1689107985, guid: e44f0917fa201b34598de117c723a3f7, type: 3}
+  - {fileID: -1391751473, guid: e44f0917fa201b34598de117c723a3f7, type: 3}
+  - {fileID: -708230938, guid: ae8a687e5ac318d42a09a63fab83c966, type: 3}
+  - {fileID: 1920272427, guid: ae8a687e5ac318d42a09a63fab83c966, type: 3}
+  tutorialSlideSprites:
+  - {fileID: -1030802311, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: 1584541964, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: 2058829146, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: -721634751, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: 1416923334, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: 1341530041, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  tutorialPageNumSprites:
+  - {fileID: -1114528101, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: 2027422685, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: 959222865, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: -1150404763, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: -1645960496, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: -434494602, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
 --- !u!1 &1460159982
 GameObject:
   m_ObjectHideFlags: 0

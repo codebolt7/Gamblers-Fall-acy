@@ -15,16 +15,25 @@ public class FireballProjectile : MonoBehaviour
     Vector2 velocity;
     private int moveFrameIndex;
     private float moveTimer;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
     {
         moveTimer = 0;
+        timer = 5;
     }
 
     // Update is called once per frame
     void Update()   
     {
+        timer -= Time.deltaTime;
+        Debug.Log(timer);
+        if (timer < 0)
+        {
+            Destroy(gameObject);
+        }
+
         GetComponent<Rigidbody2D>().velocity = velocity;
         BaseAnimate();
     }
