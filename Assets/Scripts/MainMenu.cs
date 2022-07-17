@@ -275,6 +275,10 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator LevelTransition(float time)
     {
+        if (instance)
+        {
+            Destroy(instance.gameObject);
+        }
         blackBackground.style.opacity = 100;
         blackBackground.style.top = 0;
         float timeElapsed = 0;
