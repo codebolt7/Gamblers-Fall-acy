@@ -171,7 +171,7 @@ public class EnemySkeleton : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (state == State.Dead || state == State.Stunned)
         {
