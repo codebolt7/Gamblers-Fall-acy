@@ -37,7 +37,7 @@ public class SpiderProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Enemy HIT!");
+            // Debug.Log("Enemy HIT!");
             player.GetComponent<Player>().GetDamaged(attackDmg);
         }
     }

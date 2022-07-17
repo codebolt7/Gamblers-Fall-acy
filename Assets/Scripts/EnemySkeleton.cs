@@ -73,7 +73,7 @@ public class EnemySkeleton : MonoBehaviour
     public void GetDamaged(float damage, float knockbackMultiplier) 
     {
         hp -= damage;
-        Debug.Log(gameObject.name + "'s HP: " + hp);
+        // Debug.Log(gameObject.name + "'s HP: " + hp);
         
         stunTimer = state == State.Dead ? stunDuration*4 : stunDuration;
         state = State.Stunned;
@@ -129,7 +129,7 @@ public class EnemySkeleton : MonoBehaviour
 
     private void SpawnAttack()
     {
-        Debug.Log("Skeleton Attacks");
+        // Debug.Log("Skeleton Attacks");
         GameObject projectile = Instantiate(boneProjectile);
         projectile.transform.position = transform.position;
         projectile.GetComponent<BoneProjectile>().Init(player.GetComponent<Player>(), attackDmg);

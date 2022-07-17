@@ -66,7 +66,7 @@ public class EnemyBat : MonoBehaviour
     public void GetDamaged(float damage, float knockbackMultiplier)
     {
         hp -= damage;
-        Debug.Log(gameObject.name + "'s HP: " + hp);
+        // Debug.Log(gameObject.name + "'s HP: " + hp);
         stunTimer = state == State.Dead ? stunDuration*4 : stunDuration;
         
         state = State.Stunned;

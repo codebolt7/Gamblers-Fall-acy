@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     [Header("Stats")]
     [SerializeField] float attackDmg = 1f;
     [SerializeField] float speed = 5f;
-    [SerializeField] float maxHP = 5f;
+    [SerializeField] float maxHP = 8f;
     [SerializeField] float attackDistance = 1;
     [SerializeField] float dashDuration = 0.1f;
     [SerializeField] float dashLength = 3.5f;//originally 3.5 units
@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
         attack.transform.SetParent(transform.parent);
         shockwave.transform.SetParent(transform.parent);
         rb = GetComponent<Rigidbody2D>();
+        hp = maxHP;
     }
 
     // Start is called before the first frame update
@@ -135,7 +136,7 @@ public class Player : MonoBehaviour
         List<Collider2D> hit = new List<Collider2D>();
         pickup.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hit);
         foreach(Collider2D collider in hit){
-            Debug.Log("SOMETHIznG IS HERE BAWAHWBSJAJSHWJASBAJSHS PEEEING AND UPPOOPING11");
+            // Debug.Log("SOMETHIznG IS HERE BAWAHWBSJAJSHWJASBAJSHS PEEEING AND UPPOOPING11");
             if(collider.TryGetComponent(out PickupDie pie))
             {   
                 
@@ -323,8 +324,18 @@ public class Player : MonoBehaviour
     {
         if (immunity) return;
         hp -= damage;
+        Debug.Log(gameObject.name + "'s HP: " + hp);
+        if (hp <= 0)
+        {
+            Dead();
+        }
         immunityDuration = hitImmunityDuration;
         StartCoroutine(Immunity());
+    }
+
+    private void Dead()
+    {
+        Destroy(gameObject);
     }
 
     private IEnumerator Immunity()
@@ -355,6 +366,11 @@ public class Player : MonoBehaviour
 
         casting = false;
 
+    }
+
+    public int GetHP()
+    {
+        return (int)hp;
     }
 
     void OnEnable()

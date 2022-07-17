@@ -177,7 +177,7 @@ public class EnemySpider : MonoBehaviour
 
     private void SpawnAttack()
     {
-        Debug.Log("Skeleton Attacks");
+        // Debug.Log("Skeleton Attacks");
         GameObject projectile0 = Instantiate(boneProjectile);
         GameObject projectile1 = Instantiate(boneProjectile);
         GameObject projectile2 = Instantiate(boneProjectile);
