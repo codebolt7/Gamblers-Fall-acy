@@ -59,7 +59,7 @@ public class BattleUI : MonoBehaviour
     void DiceGrab(int diceNum)
     {
         Debug.Log("wowow " + grabbedDieVal);
-        UpdateHealth(0);
+        //UpdateHealth(0);
 
         if (diceVals[diceNum])
         {
@@ -312,6 +312,8 @@ public class BattleUI : MonoBehaviour
     private void RetryButtonClicked()
     {
         retryButton.style.backgroundImage = new StyleBackground(buttonSprites[2]);
+        door.GetComponent<Door>().nextLevel = SceneManager.GetActiveScene().name;
+        StartCoroutine(door.GetComponent<Door>().LevelEndTransition(1));
     }
 
     void Start()
