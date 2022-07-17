@@ -27,10 +27,10 @@ public class Door : MonoBehaviour
 
         blackBackground = rootVisualElement.Q<IMGUIContainer>("BlackBackground");
 
+        instance = Music.instance;
         if (instance == null)
             music.SetActive(true);
-        else
-            instance = Music.instance;
+        
     }
 
     private IEnumerator DelayMusic(float time)
@@ -124,7 +124,7 @@ public class Door : MonoBehaviour
         if (nextLevel == "Main Menu")
         {
             Debug.Log("fuck");
-            instance.gameObject.SetActive(false);
+            Destroy(instance.gameObject);
         }
             
         
