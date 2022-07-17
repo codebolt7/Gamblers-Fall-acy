@@ -34,7 +34,7 @@ public class BoneProjectile : MonoBehaviour
         velocity = (player.transform.position - transform.position).normalized * 3f;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("This Runs");
         if (collision.gameObject.CompareTag("Player"))
