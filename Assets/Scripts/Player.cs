@@ -374,7 +374,8 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator killCol()
-    {
+    {   
+        dash.SetActive(true);
         dash.transform.right = rb.velocity.normalized;
         List<Collider2D> hits = new List<Collider2D>();
         dash.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hits);
@@ -412,7 +413,7 @@ public class Player : MonoBehaviour
                 collider.isTrigger = false;
             }
         }
-        
+        dash.SetActive(false);
     }
 
     private IEnumerator Casting()
