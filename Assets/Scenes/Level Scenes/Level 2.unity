@@ -311,7 +311,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1746,7 +1746,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7786459, y: 1}
+    m_SensorSize: {x: 1.5, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10315,7 +10315,7 @@ MonoBehaviour:
   batUI: {fileID: 1448408576}
   attackDmg: 1
   speed: 3
-  maxHP: 5
+  maxHP: 8
   attackDistance: 0.75
   dashDuration: 0.1
   dashLength: 3.5

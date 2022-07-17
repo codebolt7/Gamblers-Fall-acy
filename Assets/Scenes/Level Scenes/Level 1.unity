@@ -311,6 +311,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9140974979832464010, guid: 84f3f3d2025b61e419153195a501545a, type: 3}
+      propertyPath: batUI
+      value: 
+      objectReference: {fileID: 910182685}
+    - target: {fileID: 9140974979832464010, guid: 84f3f3d2025b61e419153195a501545a, type: 3}
+      propertyPath: maxHP
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84f3f3d2025b61e419153195a501545a, type: 3}
 --- !u!1 &910182684 stripped
@@ -318,6 +326,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7095081232583477112, guid: 5748ad2b91f3b0f4ba95110d667fbf8c, type: 3}
   m_PrefabInstance: {fileID: 7095081232419884644}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &910182685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7095081232583477113, guid: 5748ad2b91f3b0f4ba95110d667fbf8c, type: 3}
+  m_PrefabInstance: {fileID: 7095081232419884644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910182684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6730e4f5917cf7a48b144fffe7c2d672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980229142
 GameObject:
   m_ObjectHideFlags: 0
@@ -5503,7 +5522,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
