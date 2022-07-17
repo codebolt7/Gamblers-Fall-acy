@@ -29,7 +29,10 @@ public class Door : MonoBehaviour
 
         instance = Music.instance;
         if (instance == null)
+        {
             music.SetActive(true);
+            instance = Music.instance;
+        }
         
     }
 

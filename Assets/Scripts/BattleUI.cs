@@ -165,8 +165,10 @@ public class BattleUI : MonoBehaviour
             currentHealthVal = newHealthVal;
 
             if (currentHealthVal == 0)
+            {
                 RuntimeManager.CreateInstance("event:/SFX/Player_Death").start();
                 StartCoroutine(Lose(1));
+            }
         }
     }
 

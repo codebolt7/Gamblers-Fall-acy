@@ -340,6 +340,7 @@ public class Player : MonoBehaviour
         RuntimeManager.CreateInstance("event:/SFX/Player_Hit").start();
         hp -= damage;
         Debug.Log(gameObject.name + "'s HP: " + hp);
+        batUI.UpdateHealth((int) hp);
         if (hp <= 0)
         {
             Dead();
