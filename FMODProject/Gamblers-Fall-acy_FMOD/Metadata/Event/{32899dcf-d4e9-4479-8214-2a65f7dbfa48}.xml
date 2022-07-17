@@ -173,9 +173,6 @@
 		<property name="initialValue">
 			<value>-80</value>
 		</property>
-		<property name="attackTime">
-			<value>20</value>
-		</property>
 		<property name="decayTime">
 			<value>980</value>
 		</property>

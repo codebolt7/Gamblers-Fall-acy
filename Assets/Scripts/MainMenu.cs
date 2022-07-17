@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 {
     private Music instance;
     [SerializeField] private GameObject music;
+    [SerializeField] private GameObject tutorialMusic;
 
     private IMGUIContainer background;
     private IMGUIContainer playButton, settingsButton, creditsButton, fullscreenButton;
@@ -155,6 +156,7 @@ public class MainMenu : MonoBehaviour
 
     private void MusicSliderSelected() 
     {
+        Debug.Log("god fuck");
         musicSliderHeld = true;
     }
 
@@ -165,6 +167,12 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator FadeTutorial(bool open, float time, IMGUIContainer element)
     {
+        if (instance == null)
+            music.SetActive(false);
+        else
+            instance.gameObject.SetActive(false);
+        tutorialMusic.SetActive(true);
+
         float finalVal, startVal;
         if (open)
         {
@@ -275,12 +283,22 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (!Mouse.current.leftButton.IsPressed()){
+        if (!Mouse.current.leftButton.IsPressed())
+        {
             playButton.style.backgroundImage = new StyleBackground(buttonSprites[0]);
             if (!settingsMenuOpen) settingsButton.style.backgroundImage = new StyleBackground(buttonSprites[2]);
             if (!creditsMenuOpen) creditsButton.style.backgroundImage = new StyleBackground(buttonSprites[4]);
             musicSliderHeld = false;
             masterSliderHeld = false;
+        }
+        if (musicSliderHeld)
+        {
+            musicSlider.style.left = Mathf.Clamp(Mouse.current.position.ReadValue().x - 272, 178, 404);
+            Debug.Log(musicSlider.style.left);
+        }
+        if (masterSliderHeld)
+        {
+            masterSlider.style.left = Mathf.Clamp(Mouse.current.position.ReadValue().x - 272, 178, 404);
         }
     }
 }
