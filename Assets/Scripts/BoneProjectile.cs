@@ -34,6 +34,11 @@ public class BoneProjectile : MonoBehaviour
         velocity = (player.transform.position - transform.position).normalized * 3f;
     }
 
+    public void Shockwave()
+    {
+        velocity = (transform.position - player.transform.position).normalized * 10f;
+    }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("This Runs");

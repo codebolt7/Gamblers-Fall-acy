@@ -269,18 +269,23 @@ public class Player : MonoBehaviour
             Debug.Log(collider.name);
             if (collider.TryGetComponent(out EnemyBat enemyB))
             {
-                enemyB.GetDamaged(attackDmg/4, shockwaveKB);
+                enemyB.GetDamaged(attackDmg, shockwaveKB);
             }
             else if (collider.TryGetComponent(out EnemySkeleton enemyS))
             {
-                enemyS.GetDamaged(attackDmg/4, shockwaveKB);
-                //Need to add knockback function
-                Debug.Log("Test");
+                enemyS.GetDamaged(attackDmg, shockwaveKB);
             }
             else if (collider.TryGetComponent(out EnemySpider enemySp))
             {
-                enemySp.GetDamaged(attackDmg/4, shockwaveKB);
-                Debug.Log("Test");
+                enemySp.GetDamaged(attackDmg, shockwaveKB);
+            }
+            else if (collider.TryGetComponent(out BoneProjectile bone))
+            {
+                bone.Shockwave();
+            }
+            else if (collider.TryGetComponent(out SpiderProjectile bullet))
+            {
+                bullet.Shockwave();
             }
 
         }

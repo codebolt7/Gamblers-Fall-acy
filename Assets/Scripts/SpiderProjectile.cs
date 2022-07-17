@@ -33,6 +33,11 @@ public class SpiderProjectile : MonoBehaviour
         velocity = direction * 3f;
     }
 
+    public void Shockwave()
+    {
+        velocity = (transform.position - player.transform.position).normalized * 10f;
+    }
+
     void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
