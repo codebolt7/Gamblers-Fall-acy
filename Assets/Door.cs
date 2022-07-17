@@ -78,11 +78,14 @@ public class Door : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player" && doorOpen)
+        {
             StartCoroutine(LevelEndTransition(1));
+        }
+            
             
     }
 
-    private IEnumerator LevelStartTransition(float time)
+    public IEnumerator LevelStartTransition(float time)
     {
         float timeElapsed = 0;
         float t = 0;
@@ -97,7 +100,7 @@ public class Door : MonoBehaviour
         blackBackground.style.top = -640;
     }
 
-    private IEnumerator LevelEndTransition(float time)
+    public IEnumerator LevelEndTransition(float time)
     {
         float timeElapsed = 0;
         float t = 0;
