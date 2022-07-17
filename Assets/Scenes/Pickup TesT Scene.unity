@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7535bd51391da88409ec7e31d443470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 91339464}
+  die: {fileID: 4033616828757410027, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
   speed: 1
   attackDmg: 1
   maxHP: 3
@@ -546,6 +547,54 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!1 &566190553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566190554}
+  - component: {fileID: 566190555}
+  m_Layer: 0
+  m_Name: Pickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &566190554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566190553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1230102635}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &566190555
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566190553}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.2}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &816409735
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +643,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1.7
 --- !u!212 &816409738
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1180,6 +1229,7 @@ MonoBehaviour:
   fireballProjectile: {fileID: 1936301660545286025, guid: b71efeb58b8ebc54aa6937287dfa8e65, type: 3}
   shockwave: {fileID: 816409735}
   shield: {fileID: 891292074}
+  pickup: {fileID: 566190553}
   spriteTop: {fileID: 1300783958}
   spriteBottom: {fileID: 1436775468}
   attackContactFilter:
@@ -1209,6 +1259,7 @@ MonoBehaviour:
   dashImmunityDuration: 0.1
   fortuneImmunityDuration: 2.8
   immunityDuration: 2
+  pickupRange: 1.7
   frameDelay: 0.1
   animIdleTop:
   - {fileID: 21300000, guid: e21a8814ff3ed1745b6ad39c4e2d8bd0, type: 3}
@@ -1287,6 +1338,7 @@ Transform:
   - {fileID: 1214889336}
   - {fileID: 816409736}
   - {fileID: 891292075}
+  - {fileID: 566190554}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1686,70 +1738,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7563617539031888658, guid: 52b8092ac46648f49b72bd25288a9371, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1687593830}
     - target: {fileID: 7563617539031888661, guid: 52b8092ac46648f49b72bd25288a9371, type: 3}
       propertyPath: m_Name
       value: Bat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b8092ac46648f49b72bd25288a9371, type: 3}
---- !u!1001 &6314878401370419995
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.934
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.067
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.024286505
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1131427577961487926, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4033616828757410027, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_Name
-      value: DiePickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 4033616828757410027, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-      propertyPath: m_TagString
-      value: Pickup
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
+--- !u!50 &1687593830 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 7563617539031888657, guid: 52b8092ac46648f49b72bd25288a9371, type: 3}
+  m_PrefabInstance: {fileID: 1474150629}
+  m_PrefabAsset: {fileID: 0}
