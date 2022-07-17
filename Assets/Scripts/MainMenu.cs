@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class MainMenu : MonoBehaviour
 {
@@ -65,16 +66,19 @@ public class MainMenu : MonoBehaviour
 
     private void SkipLore()
     {
+        RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
         loreSkip = true;
     }
 
     private void OnPlayButtonDown()
     {
+        RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
         playButton.style.backgroundImage = new StyleBackground(buttonSprites[1]);
     }
 
     private void OnPlayButtonClick()
     {
+        RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
         StartCoroutine(FadeTutorial(true, 1, lore));
         tutorial.pickingMode = PickingMode.Position;
         playButton.style.backgroundImage = new StyleBackground(buttonSprites[0]);
@@ -82,11 +86,13 @@ public class MainMenu : MonoBehaviour
 
     private void OnSettingsButtonDown()
     {
+        RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
         settingsButton.style.backgroundImage = new StyleBackground(buttonSprites[3]);
     }
 
     private void OnSettingsButtonClick()
     {
+        RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
         if (settingsMenuOpen)
         {
             settingsMenu.style.opacity = 0;
@@ -104,11 +110,13 @@ public class MainMenu : MonoBehaviour
 
     private void OnCreditsButtonDown()
     {
+        RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
         creditsButton.style.backgroundImage = new StyleBackground(buttonSprites[5]);
     }
 
     private void OnCreditsButtonClick()
     {
+        RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
         if (creditsMenuOpen)
         {
             creditsMenu.style.opacity = 0;
@@ -194,9 +202,13 @@ public class MainMenu : MonoBehaviour
             
         }
         else if (currentTutorialSlide + amount > 5)
+        {
+            RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
             SceneManager.LoadScene("Level 1");
+        }
         else
         {
+            RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
             currentTutorialSlide += amount;
             tutorialSlide.style.backgroundImage = new StyleBackground(tutorialSlideSprites[currentTutorialSlide]);
             if (currentTutorialSlide == 5)
