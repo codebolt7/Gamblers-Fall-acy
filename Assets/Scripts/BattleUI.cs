@@ -54,7 +54,6 @@ public class BattleUI : MonoBehaviour
     void DiceGrab(int diceNum)
     {
         Debug.Log("wowow " + grabbedDieVal);
-        UpdateHealth(0);
 
         if (diceVals[diceNum])
         {
