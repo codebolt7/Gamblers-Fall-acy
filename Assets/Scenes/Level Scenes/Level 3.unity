@@ -848,6 +848,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 160133916}
     - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
+      propertyPath: doorCost
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
       propertyPath: finalDoor
       value: 1
       objectReference: {fileID: 0}

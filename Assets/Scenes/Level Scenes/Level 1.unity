@@ -9372,7 +9372,7 @@ PrefabInstance:
       objectReference: {fileID: 910182684}
     - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
       propertyPath: doorCost
-      value: 21
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
       propertyPath: nextLevel
