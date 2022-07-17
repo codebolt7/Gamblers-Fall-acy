@@ -124,9 +124,9 @@ public class Door : MonoBehaviour
 
     public IEnumerator LevelEndTransition(float time)
     {
-        if (nextLevel == "Main Menu" || nextLevel == "Win")
+        if ((nextLevel == "Main Menu" || nextLevel == "Win") && !(SceneManager.GetActiveScene().name == "Win"))
         {
-            Debug.Log("fuck");
+            Debug.Log(SceneManager.GetActiveScene().name);
             Destroy(instance.gameObject);
         }
             
