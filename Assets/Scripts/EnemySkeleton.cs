@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class EnemySkeleton : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class EnemySkeleton : MonoBehaviour
 
     public void GetDamaged(float damage, float knockbackMultiplier) 
     {
+        RuntimeManager.CreateInstance("event:/SFX/Enemy_Hit").start();
         hp -= damage;
         // Debug.Log(gameObject.name + "'s HP: " + hp);
         

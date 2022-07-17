@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class Player : MonoBehaviour
 {
@@ -144,6 +145,13 @@ public class Player : MonoBehaviour
                 Debug.Log((int)pie.num);
                 if(dice[(int)pie.num]) return;
                 dice[(int)pie.num] = true;
+
+                if (Random.Range(0, 2) * 2 <= 1)
+                    RuntimeManager.CreateInstance("event:/SFX/DicePickup").start();
+                else
+                    RuntimeManager.CreateInstance("event:/SFX/DicePickup2").start();
+
+                
                 Destroy(collider.transform.gameObject);
             }
         }
@@ -154,6 +162,7 @@ public class Player : MonoBehaviour
     {
         if (attacking) yield break; //The equivalent of return for an IEnumerator
         attacking = true;
+        RuntimeManager.CreateInstance("event:/SFX/Player_BasicAttack").start();
 
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>());
         Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized;
@@ -211,6 +220,7 @@ public class Player : MonoBehaviour
         //Want a 4~frame invulnerable dash that travels 3.5~ in whatever 
         //direction is pressed
         if(batUI.chargeVals[0] <= 0) yield break;
+        RuntimeManager.CreateInstance("event:/SFX/Player_Dash").start();
         dashing = true;
         immunityDuration = dashImmunityDuration;
         StartCoroutine(Immunity());
@@ -226,6 +236,7 @@ public class Player : MonoBehaviour
     private IEnumerator Fireball()
     {   
         if(batUI.chargeVals[1] <= 0) yield break;
+        RuntimeManager.CreateInstance("event:/SFX/Spell_CastPower").start();
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>()); //Gets scrren position, converts to world position
         Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized; // World position minus player position, then normalized
         StartCoroutine(Casting());
@@ -241,6 +252,7 @@ public class Player : MonoBehaviour
     private IEnumerator Shockwave()
     {   
         if (raving || batUI.chargeVals[2] <= 0) yield break;
+        RuntimeManager.CreateInstance("event:/SFX/Spell_CastAOE").start();
         batUI.chargeVals[2] -= 1;
         batUI.UpdateAbilities(2, batUI.chargeVals[2]);
         raving = true;
@@ -289,6 +301,7 @@ public class Player : MonoBehaviour
     private IEnumerator Shield()
     {   
         if(shielded || batUI.chargeVals[3] <= 0) yield break;
+        RuntimeManager.CreateInstance("event:/SFX/Spell_ShieldUp").start();
         batUI.chargeVals[3] -= 1;
         batUI.UpdateAbilities(3, batUI.chargeVals[3]);
         shielded = true;
@@ -315,6 +328,7 @@ public class Player : MonoBehaviour
             //Debug.Log(Time.timeScale);
         }
 
+        RuntimeManager.CreateInstance("event:/SFX/Spell_ShieldDown").start();
         shield.SetActive(false);
         shielded = false;
 
@@ -323,6 +337,7 @@ public class Player : MonoBehaviour
     public void GetDamaged(float damage)
     {
         if (immunity) return;
+        RuntimeManager.CreateInstance("event:/SFX/Player_Hit").start();
         hp -= damage;
         Debug.Log(gameObject.name + "'s HP: " + hp);
         if (hp <= 0)

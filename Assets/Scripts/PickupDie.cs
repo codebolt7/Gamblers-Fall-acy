@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PickupDie : MonoBehaviour
 {
@@ -51,30 +52,37 @@ public class PickupDie : MonoBehaviour
         switch (tempNum){
             case 0:
                 num = Number.ONE;
+                RuntimeManager.CreateInstance("event:/SFX/DiceRollSoft").start();
                 SR.sprite = sprites[tempNum];
                 break;
             case 1:
-                num = Number.TWO;               
+                num = Number.TWO;
+                RuntimeManager.CreateInstance("event:/SFX/DiceRollSemisoft").start();
                 SR.sprite = sprites[tempNum];
                 break;
             case 2:
                 num = Number.THREE;
+                RuntimeManager.CreateInstance("event:/SFX/DiceRollSemisoft2").start();
                 SR.sprite = sprites[tempNum];
                 break;
             case 3:
                 num = Number.FOUR;
+                RuntimeManager.CreateInstance("event:/SFX/DiceRollSemisharp").start();
                 SR.sprite = sprites[tempNum];
                 break;
             case 4:
                 num = Number.FIVE;
+                RuntimeManager.CreateInstance("event:/SFX/DiceRollSharp").start();
                 SR.sprite = sprites[tempNum];
                 break;
             case 5:
                 num = Number.SIX;
+                RuntimeManager.CreateInstance("event:/SFX/DiceRollSharp").start();
                 SR.sprite = sprites[tempNum];
                 break;
             default:
                 num = Number.ONE;
+                RuntimeManager.CreateInstance("event:/SFX/DiceRollSoft").start();
                 SR.sprite = sprites[tempNum];
                 break;
             }
