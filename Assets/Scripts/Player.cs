@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject shockwave;
     [SerializeField] GameObject shield;
     [SerializeField] GameObject pickup;
+    [SerializeField] GameObject dash;
     [SerializeField] SpriteRenderer spriteTop;
     [SerializeField] SpriteRenderer spriteBottom;
     [SerializeField] ContactFilter2D attackContactFilter;
@@ -223,9 +224,10 @@ public class Player : MonoBehaviour
         RuntimeManager.CreateInstance("event:/SFX/Player_Dash").start();
         dashing = true;
         immunityDuration = dashImmunityDuration;
-        StartCoroutine(Immunity());
+        StartCoroutine(Immunity());        
+        StartCoroutine(killCol());
         Vector2 currentVel = rb.velocity;
-        rb.velocity = rb.velocity*2*dashLength;
+        rb.velocity = controls.Player.Move.ReadValue<Vector2>()*speed*2*dashLength;
         yield return new WaitForSeconds(dashDuration);
         rb.velocity = currentVel;
         dashing = false;
@@ -369,6 +371,48 @@ public class Player : MonoBehaviour
         immunity = false;
         spriteTop.color = new Color(1, 1, 1, 1);
         spriteBottom.color = new Color(1, 1, 1, 1);
+    }
+
+    private IEnumerator killCol()
+    {
+        dash.transform.right = rb.velocity.normalized;
+        List<Collider2D> hits = new List<Collider2D>();
+        dash.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hits);
+        foreach(Collider2D collider in hits)
+        {            
+            if (collider.TryGetComponent(out EnemyBat enemyB))
+            {   
+                Debug.Log("Bats Detected, ");
+                collider.isTrigger = true;
+            }
+            else if (collider.TryGetComponent(out EnemySkeleton enemyS))
+            {
+                collider.isTrigger = true;
+            }
+            else if (collider.TryGetComponent(out EnemySpider enemySp))
+            {
+                collider.isTrigger = true;
+            }
+        }
+
+        yield return new WaitForSeconds(dashDuration*1.2f);
+
+        foreach(Collider2D collider in hits)
+        {            
+            if (collider.TryGetComponent(out EnemyBat enemyB))
+            {
+                collider.isTrigger = false;
+            }
+            else if (collider.TryGetComponent(out EnemySkeleton enemyS))
+            {
+                collider.isTrigger = false;
+            }
+            else if (collider.TryGetComponent(out EnemySpider enemySp))
+            {
+                collider.isTrigger = false;
+            }
+        }
+        
     }
 
     private IEnumerator Casting()
