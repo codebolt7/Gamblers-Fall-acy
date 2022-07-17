@@ -8,6 +8,9 @@ using FMODUnity;
 
 public class MainMenu : MonoBehaviour
 {
+    private Music instance;
+    [SerializeField] private GameObject music;
+
     private IMGUIContainer background;
     private IMGUIContainer playButton, settingsButton, creditsButton, fullscreenButton;
     private IMGUIContainer settingsMenu, musicSlider, masterSlider, creditsMenu;
@@ -63,6 +66,18 @@ public class MainMenu : MonoBehaviour
 
         backButton.RegisterCallback<ClickEvent>(ev => IncrementTutorialSlide(-1));
         forwardButton.RegisterCallback<ClickEvent>(ev => IncrementTutorialSlide(1));
+
+        instance = Music.instance;
+    }
+
+    void Start()
+    {
+        if (instance == null)
+        {
+            music.SetActive(true);
+        }
+
+        StartCoroutine(LevelStartTransition(1));
     }
 
     private void SkipLore()
@@ -225,9 +240,25 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    public IEnumerator LevelStartTransition(float time)
+    {
+        float timeElapsed = 0;
+        float t = 0;
+        while(timeElapsed < time)
+        {
+            t = timeElapsed/time;
+            t = Mathf.Sin((t * Mathf.PI) / 2);
+            blackBackground.style.top = Mathf.Lerp(0, -640, t);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        blackBackground.style.top = -640;
+    }
+
     private IEnumerator LevelTransition(float time)
     {
         blackBackground.style.opacity = 100;
+        blackBackground.style.top = 0;
         float timeElapsed = 0;
         float t = 0;
         while(timeElapsed < time)

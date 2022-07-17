@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
     public int doorCost = 21;
     public bool finalDoor = false;
     private bool doorOpen = false;
+    private Music instance;
     [SerializeField] private string nextLevel;
     [SerializeField] private GameObject battleUI;
     [SerializeField] private GameObject music;
@@ -26,8 +27,21 @@ public class Door : MonoBehaviour
 
         blackBackground = rootVisualElement.Q<IMGUIContainer>("BlackBackground");
 
-        if (music != null)
-            DontDestroyOnLoad(music);
+        instance = Music.instance;
+    }
+
+    private IEnumerator DelayMusic(float time)
+    {
+        float timeElapsed = 0;
+        float t = 0;
+        while(timeElapsed < time)
+        {
+            t = timeElapsed/time;
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        music.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -79,6 +93,8 @@ public class Door : MonoBehaviour
     {
         if (collision.name == "Player" && doorOpen)
         {
+            if (finalDoor)
+                instance.gameObject.SetActive(false);
             StartCoroutine(LevelEndTransition(1));
         }
             

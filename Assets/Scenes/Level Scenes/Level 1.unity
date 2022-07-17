@@ -186,6 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 541761979}
   - component: {fileID: 541761978}
+  - component: {fileID: 541761980}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -238,6 +239,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &541761980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541761977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5342bda7b4c0d9c40800fec1ae36af91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableScene: Win
 --- !u!1001 &884838719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4937,10 +4951,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1436958117}
   - component: {fileID: 1436958116}
-  - component: {fileID: 1436958115}
   - component: {fileID: 1436958114}
   - component: {fileID: 1436958113}
   - component: {fileID: 1436958112}
+  - component: {fileID: 1436958118}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5038,14 +5052,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &1436958115
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436958111}
-  m_Enabled: 1
 --- !u!20 &1436958116
 Camera:
   m_ObjectHideFlags: 0
@@ -5104,6 +5110,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1436958118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436958111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &1499017643
 GameObject:
   m_ObjectHideFlags: 0
