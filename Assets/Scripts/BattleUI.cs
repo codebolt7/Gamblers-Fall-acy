@@ -211,9 +211,9 @@ public class BattleUI : MonoBehaviour
             //UpdateAbilities(abilityNum, Mathf.Clamp(chargeVals[abilityNum] + grabbedDieVal, 0, 9));
             dieGrabbed = false;
             player.dice[grabbedDieVal - 1] = false;
+            door.GetComponent<Door>().UpdateDoorCounter(grabbedDieVal);
             grabbedDieVal = 0;
             grabbedDie.style.opacity = 0;
-            door.GetComponent<Door>().UpdateDoorCounter(grabbedDieVal);
         }
                 
         
@@ -230,7 +230,7 @@ public class BattleUI : MonoBehaviour
         {
             if (diceFilled)
                 dice[diceNum].style.backgroundImage = new StyleBackground(diceSprites[diceNum * 2 - 1]);
-            else
+            else if (!dieGrabbed)
                 dice[diceNum].style.backgroundImage = new StyleBackground(diceSprites[diceNum * 2 - 2]);
 
             diceVals[diceNum] = diceFilled;
@@ -335,7 +335,7 @@ public class BattleUI : MonoBehaviour
     {       
         int i = 1;
         foreach(bool die in player.dice){
-            if(grabbedDieVal != i+1){   
+            if(grabbedDieVal != i){   
                 UpdateDice(i, die);
             }
             i++;
