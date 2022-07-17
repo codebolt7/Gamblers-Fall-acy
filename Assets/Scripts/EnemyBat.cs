@@ -16,6 +16,7 @@ public class EnemyBat : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     GameObject player;
     SpriteRenderer spriteRenderer;
+    [SerializeField] GameObject die;
 
     [Header("Stats")]
     [SerializeField] float speed = 1;
@@ -32,6 +33,7 @@ public class EnemyBat : MonoBehaviour
 
     private float hp;
     private float stunTimer;
+    private bool spawned;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class EnemyBat : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player");
+        spawned = false;
     }
 
     // Update is called once per frame
@@ -63,7 +66,8 @@ public class EnemyBat : MonoBehaviour
     {
         hp -= damage;
         Debug.Log(gameObject.name + "'s HP: " + hp);
-        stunTimer = stunDuration;
+        stunTimer = state == State.Dead ? stunDuration*4 : stunDuration;
+        
         state = State.Stunned;
         spriteRenderer.color = new Color(1, 1, 1, 0.5f);
         rb.velocity = Vector2.zero;
@@ -96,10 +100,18 @@ public class EnemyBat : MonoBehaviour
     // }
 
     private void Dead()
-    {
+    {   
+        if(!spawned){
+            GameObject deathyDie = Instantiate(die);
+            deathyDie.transform.position = transform.position;
+            deathyDie.transform.SetParent(transform.parent);
+            spawned = true;
+        }
+
         stunTimer -= Time.deltaTime;
         if (stunTimer < 0)
-        {
+        {   
+
             Destroy(gameObject);
         }
     }
