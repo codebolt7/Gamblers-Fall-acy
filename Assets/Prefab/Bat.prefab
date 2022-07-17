@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7563617539031888657}
   die: {fileID: 4033616828757410027, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-  speed: 1
+  speed: 2
   attackDmg: 1
   maxHP: 3
   pushbackForce: 500
@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: 294539313, guid: 2057a6d22cbb4bc4a940e839c9a50a02, type: 3}
   - {fileID: 1219374123, guid: 2057a6d22cbb4bc4a940e839c9a50a02, type: 3}
   - {fileID: 534756120, guid: 2057a6d22cbb4bc4a940e839c9a50a02, type: 3}
+  ogre: 0
 --- !u!50 &7563617539031888657
 Rigidbody2D:
   serializedVersion: 4

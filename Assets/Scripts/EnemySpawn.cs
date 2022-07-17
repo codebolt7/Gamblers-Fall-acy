@@ -17,6 +17,7 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] GameObject spider;
     [SerializeField] GameObject ogre;
     [SerializeField] GameObject warning;
+    [SerializeField] GameObject bigWarning;
     private GameObject[] enemyPrefabs;
 
     [Header("Spawn Scheduler")]
@@ -85,7 +86,7 @@ public class EnemySpawn : MonoBehaviour
         List<GameObject> warnings = new List<GameObject>();
         foreach (Vector3 v in enemySchedule[wave])
         {
-            GameObject warn = Instantiate(warning);
+            GameObject warn = Instantiate(v.z == 3 ? bigWarning : warning);
             warn.transform.position = new Vector2(v.x, v.y);
             warnings.Add(warn);
         }

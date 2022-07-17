@@ -137,8 +137,10 @@ public class Player : MonoBehaviour
             Debug.Log("SOMETHIznG IS HERE BAWAHWBSJAJSHWJASBAJSHS PEEEING AND UPPOOPING11");
             if(collider.TryGetComponent(out PickupDie pie))
             {   
+                
                 Debug.Log("heh :3");
                 Debug.Log((int)pie.num);
+                if(dice[(int)pie.num]) return;
                 dice[(int)pie.num] = true;
                 Destroy(collider.transform.gameObject);
             }
