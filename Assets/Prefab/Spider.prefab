@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6247811922784076918}
   m_Layer: 0
   m_Name: Spider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +104,8 @@ MonoBehaviour:
   speed: 2.5
   attackDmg: 1
   maxHP: 5
-  pushbackForce: 60
-  stunDuration: 1.5
+  pushbackForce: 200
+  stunDuration: 0.25
   attackChance: 0.5
   maxDistance: 5
   projectSpread: 0.5

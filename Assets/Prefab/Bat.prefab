@@ -103,8 +103,8 @@ MonoBehaviour:
   speed: 1
   attackDmg: 1
   maxHP: 3
-  pushbackForce: 100
-  stunDuration: 1.25
+  pushbackForce: 500
+  stunDuration: 0.25
   animMove:
   - {fileID: 80803072, guid: 2057a6d22cbb4bc4a940e839c9a50a02, type: 3}
   - {fileID: 1195825425, guid: 2057a6d22cbb4bc4a940e839c9a50a02, type: 3}
