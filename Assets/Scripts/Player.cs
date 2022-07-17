@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject fireballProjectile;
     [SerializeField] GameObject shockwave;
     [SerializeField] GameObject shield;
+    [SerializeField] GameObject pickup;
     [SerializeField] SpriteRenderer spriteTop;
     [SerializeField] SpriteRenderer spriteBottom;
     [SerializeField] ContactFilter2D attackContactFilter;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour
     [SerializeField] float dashImmunityDuration = 0.1f;
     [SerializeField] float fortuneImmunityDuration = 2.8f;
     [SerializeField] float immunityDuration = 2;
+    [SerializeField] float pickupRange = 1.0f;
 
     [Header("Object Assignment")]
     [SerializeField] float frameDelay;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     [SerializeField] Sprite[] animShieldFX;
  
     private float hp;
+    private bool[] dice;
     bool attacking;
     bool dashing;
     bool casting;
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
         controls.Player.Shockwave.performed += _ => StartCoroutine(Shockwave());
         controls.Player.Shield.performed += _ => StartCoroutine(Shield());
         dashing = false;
+        dice = new bool[6];
         attack.transform.SetParent(transform.parent);
         shockwave.transform.SetParent(transform.parent);
         rb = GetComponent<Rigidbody2D>();
@@ -78,6 +82,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        Pickup();
     }
 
     private void Move()
@@ -85,7 +90,7 @@ public class Player : MonoBehaviour
         Vector2 input = controls.Player.Move.ReadValue<Vector2>();
         
         if(!dashing) rb.velocity = input * speed;
-
+        
         BaseAnimate(input);
     }
 
@@ -123,6 +128,22 @@ public class Player : MonoBehaviour
                 spriteTop.flipX = spriteBottom.flipX;
             }
         }
+    }
+
+    private void Pickup(){
+        List<Collider2D> hit = new List<Collider2D>();
+        pickup.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hit);
+        foreach(Collider2D collider in hit){
+            Debug.Log("SOMETHIznG IS HERE BAWAHWBSJAJSHWJASBAJSHS PEEEING AND UPPOOPING11");
+            if(collider.TryGetComponent(out PickupDie pie))
+            {   
+                Debug.Log("heh :3");
+                Debug.Log((int)pie.num);
+                dice[(int)pie.num] = true;
+                Destroy(collider.transform.gameObject);
+            }
+        }
+
     }
 
     private IEnumerator Attack()
