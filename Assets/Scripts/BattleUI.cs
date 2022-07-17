@@ -14,11 +14,12 @@ public class BattleUI : MonoBehaviour
     private VisualElement healthbar;
     private IMGUIContainer currentHealth, healthbarFill;
     private IMGUIContainer[] dice = new IMGUIContainer[7]; // 0th element is null just so indices match dice num
-    private bool[] diceVals = {false, false, false, false, false, false, false};
     private IMGUIContainer[] abilities = new IMGUIContainer[4];
     private Button[] abilityButtons = new Button[4];
     private IMGUIContainer[] abilityCharges = new IMGUIContainer[4];
-    private int[] chargeVals = {0, 0, 0, 0};
+
+    public bool[] diceVals = {false, false, false, false, false, false, false}; // 0th element is null just so indices match dice num
+    public int[] chargeVals = {0, 0, 0, 0};
 
     // Sprites
     [SerializeField] private Sprite[] healthNums = new Sprite[9];
@@ -26,16 +27,18 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Sprite[] abilitySprites = new Sprite[8];
     [SerializeField] private Sprite[] chargeNums = new Sprite[10];
 
+    [SerializeField] private GameObject door;
+
     private IMGUIContainer grabbedDie;
-    bool dieGrabbed = false;
-    int grabbedDieVal = 0;
-    float dieShakeTimer = 0f;
-    int abilityNumShake = -1;
+    public bool dieGrabbed = false;
+    public int grabbedDieVal = 0;
+    private float dieShakeTimer = 0f;
+    private int abilityNumShake = -1;
 
-    int currentHealthVal = 8;
-    float healthShakeTimer = 0f;
+    public int currentHealthVal = 8;
+    private float healthShakeTimer = 0f;
 
-    Controls controls;
+    private Controls controls;
     void Awake()
     {
         controls = new Controls();
@@ -50,7 +53,9 @@ public class BattleUI : MonoBehaviour
 
     void DiceGrab(int diceNum)
     {
-        Debug.Log("wowow");
+        Debug.Log("wowow " + grabbedDieVal);
+        UpdateHealth(0);
+
         if (diceVals[diceNum])
         {
             if (dieGrabbed)
@@ -64,6 +69,17 @@ public class BattleUI : MonoBehaviour
             grabbedDie.style.opacity = 100;
             grabbedDieVal = diceNum;
         }
+        else if (dieGrabbed && grabbedDieVal == diceNum)
+        {
+            grabbedDie.style.opacity = 0;
+            UpdateDice(grabbedDieVal, true);
+            grabbedDieVal = 0;
+            RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start(); //sfx 
+            dieGrabbed = false;
+        }
+        
+
+        
     }
 
     private void OnEnable()
@@ -118,21 +134,25 @@ public class BattleUI : MonoBehaviour
 
     #region UI Update Functions
     // Change health to newHealthVal (range: 0-8)
-    private void UpdateHealth(int newHealthVal)
+    public void UpdateHealth(int newHealthVal)
     {
         if (newHealthVal > 8)
             Debug.Log("Health value of " + newHealthVal + " is above maximum health!");
         else
         {
-            if (newHealthVal < 0) newHealthVal = 0; // clamp to 0
+            if (newHealthVal <= 0) newHealthVal = 0; // clamp to 0
             if (newHealthVal < currentHealthVal)
             {
                 healthShakeTimer = 0.5f;
+                RuntimeManager.CreateInstance("event:/SFX/Player_Hit").start();
             }
 
             healthbarFill.style.width = 176 * newHealthVal / maxHealth;
             currentHealth.style.backgroundImage = new StyleBackground(healthNums[newHealthVal]);
             currentHealthVal = newHealthVal;
+
+            if (currentHealthVal == 0)
+                RuntimeManager.CreateInstance("event:/SFX/Player_Death").start();
         }
     }
 
@@ -161,10 +181,29 @@ public class BattleUI : MonoBehaviour
         
     }
 
+    public void ResolveHeldDieDoor(GameObject door)
+    {
+        Debug.Log("door?????");
+        if (dieGrabbed)
+        {
+            if (Random.Range(0, 2) * 2 <= 1)
+                RuntimeManager.CreateInstance("event:/SFX/DicePlace2").start(); 
+            else
+                RuntimeManager.CreateInstance("event:/SFX/DicePlace").start(); 
+                
+            //UpdateAbilities(abilityNum, Mathf.Clamp(chargeVals[abilityNum] + grabbedDieVal, 0, 9));
+            dieGrabbed = false;
+            grabbedDie.style.opacity = 0;
+            door.GetComponent<Door>().UpdateDoorCounter(grabbedDieVal);
+        }
+                
+        
+    }
+
     // Update whether specified die is in player's inventory.
     // diceNum: number on the die (range: 1-6)
     // diceFilled: whether die is in inventory or not
-    private void UpdateDice(int diceNum, bool diceFilled)
+    public void UpdateDice(int diceNum, bool diceFilled)
     {
         if (diceNum < 1 || diceNum > 6)
             Debug.Log("No die exists of value " + diceNum);
@@ -182,7 +221,7 @@ public class BattleUI : MonoBehaviour
     // Add or remove charge of an ability
     // abilityNum: enum for the abilities going from left to right: dash = 0, fireball = 1, repel = 2, shield = 3
     // newCharge: new charge value (range: 0-9)
-    private void UpdateAbilities(int abilityNum, int newCharge)
+    public void UpdateAbilities(int abilityNum, int newCharge)
     {
         if (newCharge < 0 || newCharge > 9)
             Debug.Log("Specified charge value " + newCharge + " out of range for ability " + abilityNum);
@@ -193,7 +232,6 @@ public class BattleUI : MonoBehaviour
             else
                 abilities[abilityNum].style.backgroundImage = new StyleBackground(abilitySprites[abilityNum * 2]);       
 
-            Debug.Log(newCharge);
             StartCoroutine(AbilityChargeLerp(abilityNum, newCharge, 166 + abilityNum * 160, 125 + abilityNum * 160, 0.15f, false)); // god i love uidocument
         }
     }
@@ -222,7 +260,7 @@ public class BattleUI : MonoBehaviour
 
     void Start()
     {
-        UpdateHealth(initHealth);
+        
         UpdateDice(1, true);
         UpdateDice(2, true);
         UpdateDice(3, true);
