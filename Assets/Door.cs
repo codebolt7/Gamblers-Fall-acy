@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 using FMODUnity;
 using UnityEngine.SceneManagement;
@@ -13,8 +14,21 @@ public class Door : MonoBehaviour
     private bool doorOpen = false;
     [SerializeField] private string nextLevel;
     [SerializeField] private GameObject battleUI;
+    [SerializeField] private GameObject music;
     [SerializeField] private Sprite[] doorNums = new Sprite[10];
     [SerializeField] private Sprite[] doorSprites = new Sprite[4];
+
+    private IMGUIContainer blackBackground;
+
+    void OnEnable()
+    {
+        var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
+
+        blackBackground = rootVisualElement.Q<IMGUIContainer>("BlackBackground");
+
+        if (music != null)
+            DontDestroyOnLoad(music);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +36,7 @@ public class Door : MonoBehaviour
         Physics.queriesHitTriggers = true;
         UpdateDoorCounter(0);
         if (finalDoor) GetComponent<SpriteRenderer>().sprite = doorSprites[2];
+        StartCoroutine(LevelStartTransition(1));
     }
 
     // Update is called once per frame
@@ -63,6 +78,38 @@ public class Door : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Player" && doorOpen)
-            SceneManager.LoadScene(nextLevel);
+            StartCoroutine(LevelEndTransition(1));
+            
+    }
+
+    private IEnumerator LevelStartTransition(float time)
+    {
+        float timeElapsed = 0;
+        float t = 0;
+        while(timeElapsed < time)
+        {
+            t = timeElapsed/time;
+            t = Mathf.Sin((t * Mathf.PI) / 2);
+            blackBackground.style.top = Mathf.Lerp(0, -640, t);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        blackBackground.style.top = -640;
+    }
+
+    private IEnumerator LevelEndTransition(float time)
+    {
+        float timeElapsed = 0;
+        float t = 0;
+        while(timeElapsed < time)
+        {
+            t = timeElapsed/time;
+            t = Mathf.Sin((t * Mathf.PI) / 2);
+            blackBackground.style.top = Mathf.Lerp(640, 0, t);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        blackBackground.style.top = 0;
+        SceneManager.LoadScene(nextLevel);
     }
 }

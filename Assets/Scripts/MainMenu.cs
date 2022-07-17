@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     private IMGUIContainer background;
     private IMGUIContainer playButton, settingsButton, creditsButton, fullscreenButton;
     private IMGUIContainer settingsMenu, musicSlider, masterSlider, creditsMenu;
-    private IMGUIContainer lore, tutorial, tutorialSlide, tutorialPageNum, backButton, forwardButton;
+    private IMGUIContainer blackBackground, lore, tutorial, tutorialSlide, tutorialPageNum, backButton, forwardButton;
 
     private bool settingsMenuOpen = false;
     private bool creditsMenuOpen = false;
@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
         musicSlider = rootVisualElement.Q<IMGUIContainer>("MusicSlider");
         masterSlider = rootVisualElement.Q<IMGUIContainer>("MasterSlider");
 
+        blackBackground = rootVisualElement.Q<IMGUIContainer>("BlackBackground");
         lore = rootVisualElement.Q<IMGUIContainer>("Lore");
         tutorial = rootVisualElement.Q<IMGUIContainer>("Tutorial");
         tutorialSlide = rootVisualElement.Q<IMGUIContainer>("TutorialSlide");
@@ -171,7 +172,7 @@ public class MainMenu : MonoBehaviour
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        element.style.top = finalVal;
+        lore.style.top = finalVal;
 
         timeElapsed = 0;
         while(timeElapsed < 5 && !loreSkip)
@@ -204,7 +205,8 @@ public class MainMenu : MonoBehaviour
         else if (currentTutorialSlide + amount > 5)
         {
             RuntimeManager.CreateInstance("event:/SFX/Menu_Scroll").start();
-            SceneManager.LoadScene("Level 1");
+            StartCoroutine(LevelTransition(1));
+            
         }
         else
         {
@@ -221,6 +223,23 @@ public class MainMenu : MonoBehaviour
                 backButton.style.opacity = 100;
         }
         
+    }
+
+    private IEnumerator LevelTransition(float time)
+    {
+        blackBackground.style.opacity = 100;
+        float timeElapsed = 0;
+        float t = 0;
+        while(timeElapsed < time)
+        {
+            t = timeElapsed/time;
+            t = Mathf.Sin((t * Mathf.PI) / 2);
+            tutorial.style.top = Mathf.Lerp(0, -640, t);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        tutorial.style.top = -640;
+        SceneManager.LoadScene("Level 1");
     }
 
     void Update()
