@@ -108,7 +108,8 @@ MonoBehaviour:
   pushbackForce: 200
   stunDuration: 0.25
   attackChance: 0.5
-  maxDistance: 5
+  maxDistance: 2.5
+  maxMoveLimit: 3
   projectSpread: 0.5
   idleDuration: {x: 0.5, y: 1.5}
   idleSprite: {fileID: 21300000, guid: f305fb5d19ac0924abc6c1764ab46a6a, type: 3}

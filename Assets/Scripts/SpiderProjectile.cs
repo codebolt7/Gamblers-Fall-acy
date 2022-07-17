@@ -40,5 +40,9 @@ public class SpiderProjectile : MonoBehaviour
             // Debug.Log("Enemy HIT!");
             player.GetComponent<Player>().GetDamaged(attackDmg);
         }
+        else if (collision.gameObject.layer == 6)
+        {
+            Destroy(gameObject);
+        }
     }
 }
