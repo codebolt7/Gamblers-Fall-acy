@@ -245,7 +245,7 @@ MonoBehaviour:
   spriteTop: {fileID: 9140974979762635189}
   spriteBottom: {fileID: 9140974979894433487}
   attackContactFilter:
-    useTriggers: 0
+    useTriggers: 1
     useLayerMask: 0
     useDepth: 0
     useOutsideDepth: 0
@@ -258,6 +258,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  batUI: {fileID: 0}
   attackDmg: 1
   speed: 3
   maxHP: 5
@@ -333,6 +334,7 @@ MonoBehaviour:
   - {fileID: 1951404856, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
   - {fileID: 2035659181, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
   - {fileID: 1396216387, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  dice: 
 --- !u!50 &9140974979832464011
 Rigidbody2D:
   serializedVersion: 4

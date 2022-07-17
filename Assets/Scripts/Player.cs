@@ -240,6 +240,8 @@ public class Player : MonoBehaviour
     private IEnumerator Shockwave()
     {   
         if (raving || batUI.chargeVals[2] <= 0) yield break;
+        batUI.chargeVals[2] -= 1;
+        batUI.UpdateAbilities(2, batUI.chargeVals[2]);
         raving = true;
         //Debug.Log("shockwave!");
         StartCoroutine(Casting());
@@ -280,13 +282,14 @@ public class Player : MonoBehaviour
 
         shockwave.SetActive(false);
         raving = false;
-        batUI.chargeVals[2] -= 1;
-        batUI.UpdateAbilities(2, batUI.chargeVals[2]);
+
     }
 
     private IEnumerator Shield()
     {   
         if(shielded || batUI.chargeVals[3] <= 0) yield break;
+        batUI.chargeVals[3] -= 1;
+        batUI.UpdateAbilities(3, batUI.chargeVals[3]);
         shielded = true;
         float shieldTimer = 0;
 
@@ -313,8 +316,7 @@ public class Player : MonoBehaviour
 
         shield.SetActive(false);
         shielded = false;
-        batUI.chargeVals[3] -= 1;
-        batUI.UpdateAbilities(3, batUI.chargeVals[3]);
+
     }
 
     public void GetDamaged(float damage)

@@ -1234,7 +1234,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.03387925}
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   spriteTop: {fileID: 1300783958}
   spriteBottom: {fileID: 1436775468}
   attackContactFilter:
-    useTriggers: 0
+    useTriggers: 1
     useLayerMask: 0
     useDepth: 0
     useOutsideDepth: 0
@@ -1304,6 +1304,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  batUI: {fileID: 0}
   attackDmg: 1
   speed: 3
   maxHP: 5
@@ -1379,6 +1380,7 @@ MonoBehaviour:
   - {fileID: 1951404856, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
   - {fileID: 2035659181, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
   - {fileID: 1396216387, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  dice: 
 --- !u!4 &1230102635
 Transform:
   m_ObjectHideFlags: 0
