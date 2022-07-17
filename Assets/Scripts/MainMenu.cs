@@ -28,6 +28,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Sprite[] buttonSprites = new Sprite[10];
     [SerializeField] private Sprite[] tutorialSlideSprites = new Sprite[6];
 
+    private FMOD.Studio.VCA musicVCA;
+    private FMOD.Studio.Bus master;
+
     private void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
@@ -69,6 +72,9 @@ public class MainMenu : MonoBehaviour
         forwardButton.RegisterCallback<ClickEvent>(ev => IncrementTutorialSlide(1));
 
         instance = Music.instance;
+
+        musicVCA = FMODUnity.RuntimeManager.GetVCA("vca:/Music");
+        master = FMODUnity.RuntimeManager.GetBus("bus:/");
     }
 
     void Start()
@@ -151,7 +157,11 @@ public class MainMenu : MonoBehaviour
 
     private void OnFullscreenButtonClick()
     {
-        // toggle fullscreen
+        Screen.fullScreen = !Screen.fullScreen;
+        if (Screen.fullScreen)
+            fullscreenButton.style.backgroundImage = new StyleBackground(buttonSprites[6]);
+        else
+            fullscreenButton.style.backgroundImage = new StyleBackground(buttonSprites[7]);
     }
 
     private void MusicSliderSelected() 
@@ -162,7 +172,7 @@ public class MainMenu : MonoBehaviour
 
     private void MasterSliderSelected() 
     {
-        masterSliderHeld = false;
+        masterSliderHeld = true;
     }
 
     private IEnumerator FadeTutorial(bool open, float time, IMGUIContainer element)
@@ -294,11 +304,13 @@ public class MainMenu : MonoBehaviour
         if (musicSliderHeld)
         {
             musicSlider.style.left = Mathf.Clamp(Mouse.current.position.ReadValue().x - 272, 178, 404);
-            Debug.Log(musicSlider.style.left);
+            Debug.Log(((float) musicSlider.style.left.value.value - 178) / ((404-178)/2));
+            musicVCA.setVolume((float) (musicSlider.style.left.value.value - 178) / ((404-178)/2));
         }
         if (masterSliderHeld)
         {
             masterSlider.style.left = Mathf.Clamp(Mouse.current.position.ReadValue().x - 272, 178, 404);
+            master.setVolume((float) (masterSlider.style.left.value.value - 178) / ((404-178)/2));
         }
     }
 }

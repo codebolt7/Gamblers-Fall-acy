@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using UnityEngine.SceneManagement;
 
 public class BattleUI : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BattleUI : MonoBehaviour
     // Every UI element that will be changed
     private VisualElement healthbar;
     private IMGUIContainer currentHealth, healthbarFill;
+    private IMGUIContainer loseScreen, titleButton, retryButton;
+    [SerializeField] private Sprite[] buttonSprites = new Sprite[4];
     private IMGUIContainer[] dice = new IMGUIContainer[7]; // 0th element is null just so indices match dice num
     private IMGUIContainer[] abilities = new IMGUIContainer[4];
     private Button[] abilityButtons = new Button[4];
@@ -56,6 +59,7 @@ public class BattleUI : MonoBehaviour
     void DiceGrab(int diceNum)
     {
         Debug.Log("wowow " + grabbedDieVal);
+        UpdateHealth(0);
 
         if (diceVals[diceNum])
         {
@@ -124,6 +128,14 @@ public class BattleUI : MonoBehaviour
         abilityButtons[3].RegisterCallback<MouseUpEvent>(ev => ResolveHeldDieAbility(3));
 
         grabbedDie = rootVisualElement.Q<IMGUIContainer>("GrabbedDie");
+        loseScreen = rootVisualElement.Q<IMGUIContainer>("LoseScreen");
+        titleButton = rootVisualElement.Q<IMGUIContainer>("TitleButton");
+        retryButton = rootVisualElement.Q<IMGUIContainer>("RetryButton");
+
+        titleButton.RegisterCallback<MouseDownEvent>(ev => TitleButtonDown());
+        titleButton.RegisterCallback<ClickEvent>(ev => TitleButtonClicked());
+        retryButton.RegisterCallback<MouseDownEvent>(ev => RetryButtonDown());
+        retryButton.RegisterCallback<ClickEvent>(ev => RetryButtonClicked());
 
         controls.Enable();
     }
@@ -154,6 +166,7 @@ public class BattleUI : MonoBehaviour
 
             if (currentHealthVal == 0)
                 RuntimeManager.CreateInstance("event:/SFX/Player_Death").start();
+                StartCoroutine(Lose(1));
         }
     }
 
@@ -263,6 +276,43 @@ public class BattleUI : MonoBehaviour
             yield return AbilityChargeLerp(abilityNum, newCharge, newPos, startPos, time, true);
     }
     #endregion
+
+    private IEnumerator Lose(float time)
+    {
+        float timeElapsed = 0;
+        float t = 0;
+        while(timeElapsed < time)
+        {
+            t = timeElapsed/time;
+            t = Mathf.Sin((t * Mathf.PI) / 2);
+            loseScreen.style.top = Mathf.Lerp(640, 0, t);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        loseScreen.style.top = 0;
+    }
+
+    private void TitleButtonDown()
+    {
+        titleButton.style.backgroundImage = new StyleBackground(buttonSprites[1]);
+    }
+
+    private void TitleButtonClicked()
+    {
+        titleButton.style.backgroundImage = new StyleBackground(buttonSprites[0]);
+        door.GetComponent<Door>().nextLevel = "Main Menu";
+        StartCoroutine(door.GetComponent<Door>().LevelEndTransition(1));
+    }
+
+    private void RetryButtonDown()
+    {
+        retryButton.style.backgroundImage = new StyleBackground(buttonSprites[3]);
+    }
+
+    private void RetryButtonClicked()
+    {
+        retryButton.style.backgroundImage = new StyleBackground(buttonSprites[2]);
+    }
 
     void Start()
     {

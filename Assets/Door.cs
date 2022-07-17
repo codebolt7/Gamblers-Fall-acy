@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
     public bool finalDoor = false;
     private bool doorOpen = false;
     private Music instance;
-    [SerializeField] private string nextLevel;
+    [SerializeField] public string nextLevel;
     [SerializeField] private GameObject battleUI;
     [SerializeField] private GameObject music;
     [SerializeField] private Sprite[] doorNums = new Sprite[10];
@@ -118,6 +118,7 @@ public class Door : MonoBehaviour
 
     public IEnumerator LevelEndTransition(float time)
     {
+        instance.gameObject.SetActive(false);
         float timeElapsed = 0;
         float t = 0;
         while(timeElapsed < time)

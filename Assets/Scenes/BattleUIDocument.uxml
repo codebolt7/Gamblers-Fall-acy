@@ -40,4 +40,8 @@
     <ui:Button text="Button" display-tooltip-when-elided="true" name="FireballButton" style="position: absolute; height: 101px; width: 124px; top: 523px; left: 348px; visibility: visible; opacity: 0;" />
     <ui:Button text="Button" display-tooltip-when-elided="true" name="RepelButton" style="position: absolute; height: 101px; width: 124px; top: 523px; left: 508px; visibility: visible; opacity: 0;" />
     <ui:Button text="Button" display-tooltip-when-elided="true" name="ShieldButton" style="position: absolute; height: 101px; width: 124px; top: 523px; left: 668px; visibility: visible; opacity: 0;" />
+    <ui:IMGUIContainer name="LoseScreen" style="background-image: url(&apos;project://database/Assets/Sprites/Game%20Over%20Screen.png?fileID=2800000&amp;guid=da1d88508a8daa24ea9e7a532e7e07d8&amp;type=3#Game Over Screen&apos;); width: 100%; height: 100%; position: absolute; top: 640px;">
+        <ui:IMGUIContainer name="TitleButton" style="background-image: url(&apos;project://database/Assets/Sprites/Game%20Over%20Buttons-Sheet.png?fileID=2075326844&amp;guid=fbe3bf631c77ca341aa620b7eaa299c8&amp;type=3#Game Over Buttons-Sheet_0&apos;); width: 194px; height: 64px; left: 226px; top: 500px; position: absolute;" />
+        <ui:IMGUIContainer name="RetryButton" style="background-image: url(&apos;project://database/Assets/Sprites/Game%20Over%20Buttons-Sheet.png?fileID=-1221955339&amp;guid=fbe3bf631c77ca341aa620b7eaa299c8&amp;type=3#Game Over Buttons-Sheet_1&apos;); width: 194px; height: 64px; left: auto; top: 500px; position: absolute; right: 226px;" />
+    </ui:IMGUIContainer>
 </ui:UXML>

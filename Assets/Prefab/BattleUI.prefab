@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7095081232583477112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7095081232583477115}
+  - component: {fileID: 7095081232583477114}
+  - component: {fileID: 7095081232583477113}
+  m_Layer: 5
+  m_Name: BattleUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7095081232583477115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095081232583477112}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7095081232583477114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095081232583477112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 8456d45934fe85e44a226e77ecc39b2d, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 406687dd9dbdd4b4eb888f43daacad0b, type: 3}
+  m_SortingOrder: 0
+--- !u!114 &7095081232583477113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095081232583477112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6730e4f5917cf7a48b144fffe7c2d672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSprites:
+  - {fileID: 2075326844, guid: fbe3bf631c77ca341aa620b7eaa299c8, type: 3}
+  - {fileID: -233452397, guid: fbe3bf631c77ca341aa620b7eaa299c8, type: 3}
+  - {fileID: -1221955339, guid: fbe3bf631c77ca341aa620b7eaa299c8, type: 3}
+  - {fileID: -684148483, guid: fbe3bf631c77ca341aa620b7eaa299c8, type: 3}
+  diceVals: 00000000000000
+  chargeVals: 00000000000000000000000000000000
+  healthNums:
+  - {fileID: 229988546, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: 289740496, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: -434208454, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: 1107815369, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: -936985238, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: -1701664383, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: -493535128, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: 51215753, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  - {fileID: -803144337, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
+  diceSprites:
+  - {fileID: -2098508006, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: -1573339069, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: -1589195516, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: -2063471511, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: 1118167707, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: -1839930338, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: 97239107, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: 129614432, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: 1862874066, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: -309254336, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: -7305330, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  - {fileID: 1364667076, guid: 10c5c4b80a6de974288cfbee39e97994, type: 3}
+  abilitySprites:
+  - {fileID: -634121547, guid: 5176d79916420ef48b0208b7accb8c51, type: 3}
+  - {fileID: 340947458, guid: 5176d79916420ef48b0208b7accb8c51, type: 3}
+  - {fileID: -1578683155, guid: fe1aa9071d5bb0d46bc68dd9e8aa34e5, type: 3}
+  - {fileID: -1377746454, guid: fe1aa9071d5bb0d46bc68dd9e8aa34e5, type: 3}
+  - {fileID: -758943292, guid: 050487fcf364d754284dceedb291d407, type: 3}
+  - {fileID: -21373450, guid: 050487fcf364d754284dceedb291d407, type: 3}
+  - {fileID: 1164230177, guid: 6d59e5bc5dffa244faa07eddccf92410, type: 3}
+  - {fileID: -126230644, guid: 6d59e5bc5dffa244faa07eddccf92410, type: 3}
+  chargeNums:
+  - {fileID: -259166493, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: 891753769, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: -1693269260, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: -2052364349, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: 960439420, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: 60075405, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: -1176417618, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: -379442189, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: 1633029828, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  - {fileID: 2144478191, guid: 8c06b0c7ef8ab1940bb508a877afe59d, type: 3}
+  door: {fileID: 0}
+  player: {fileID: 0}
+  dieGrabbed: 0
+  grabbedDieVal: 0
+  currentHealthVal: 8
