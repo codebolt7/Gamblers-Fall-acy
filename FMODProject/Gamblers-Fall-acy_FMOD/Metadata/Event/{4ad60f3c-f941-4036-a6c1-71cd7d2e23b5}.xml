@@ -122,6 +122,9 @@
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{af9ca819-6c63-4d4c-beb0-e1da48ae4b73}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{660feb00-a28b-4c2c-b642-7393b198e92b}</destination>
 		</relationship>
@@ -153,6 +156,9 @@
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{b6c35618-0e49-474d-8db1-02461997acb4}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{ee2d0664-bafd-47b1-8c8f-8009803300cd}</destination>
 		</relationship>
@@ -198,12 +204,46 @@
 	</object>
 	<object class="MixerBusPanner" id="{17e5b7a2-6d9b-4e76-9046-9d47f15e0b89}" />
 	<object class="MixerBusFader" id="{818303b5-3295-45ad-a335-d004b0e72560}" />
+	<object class="ADSRModulator" id="{af9ca819-6c63-4d4c-beb0-e1da48ae4b73}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>20</value>
+		</property>
+		<property name="releaseTime">
+			<value>2000</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{660feb00-a28b-4c2c-b642-7393b198e92b}">
 		<relationship name="effects">
 			<destination>{77eabbd9-7e51-4242-ada2-6e179881c33a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{116370ab-94df-4bf2-95c5-01ed633bcdc2}" />
+	<object class="ADSRModulator" id="{b6c35618-0e49-474d-8db1-02461997acb4}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>20</value>
+		</property>
+		<property name="releaseTime">
+			<value>2000</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{ee2d0664-bafd-47b1-8c8f-8009803300cd}">
 		<relationship name="effects">
 			<destination>{347adb05-a7d2-4fa8-bd60-218a5633c99f}</destination>

@@ -208,13 +208,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7940567550914826774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ef8a364b6db864d9f0c46bf6450e72, type: 3}
+  m_Script: {fileID: 11500000, guid: be47e18a2c60d4348b400557dbe8da33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   doorCost: 21
   finalDoor: 0
-  nextLevel: Level 2
+  nextLevel: 
   battleUI: {fileID: 0}
+  music: {fileID: 0}
   doorNums:
   - {fileID: 229988546, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
   - {fileID: 289740496, guid: 77be041e0753deb4fafe7c489d390f34, type: 3}
