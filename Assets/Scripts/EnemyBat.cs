@@ -147,7 +147,7 @@ public class EnemyBat : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (state == State.Dead || state == State.Stunned)
         {

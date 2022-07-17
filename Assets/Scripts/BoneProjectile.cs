@@ -36,7 +36,8 @@ public class BoneProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == player)
+        Debug.Log("This Runs");
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy HIT!");
             player.GetComponent<Player>().GetDamaged(attackDmg/2);

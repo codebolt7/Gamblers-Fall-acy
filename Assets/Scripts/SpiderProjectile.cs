@@ -35,7 +35,7 @@ public class SpiderProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == player)
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Enemy HIT!");
             player.GetComponent<Player>().GetDamaged(attackDmg);

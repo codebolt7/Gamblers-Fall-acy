@@ -88,6 +88,8 @@ public class EnemySpawn : MonoBehaviour
         {
             GameObject warn = Instantiate(v.z == 3 ? bigWarning : warning);
             warn.transform.position = new Vector2(v.x, v.y);
+            warn.transform.localScale = Vector2.zero;
+            LeanTween.scale(warn, Vector2.one, 0.25f).setEaseOutBack();
             warnings.Add(warn);
         }
         yield return new WaitForSeconds(warningDuration);
@@ -95,8 +97,12 @@ public class EnemySpawn : MonoBehaviour
         // Remove Warnings
         foreach (GameObject warn in warnings)
         {
-            Destroy(warn);
+            LeanTween.scale(warn, Vector2.one * 3f, 0.25f).setEaseInCubic();
+            LeanTween.alpha(warn, 0, 0.25f).setEaseOutCubic().setDestroyOnComplete(true);
         }
+
+        yield return new WaitForSeconds(0.25f);
+
 
         foreach (Vector3 v in enemySchedule[wave])
         {

@@ -29,6 +29,7 @@ public class EnemySpider : MonoBehaviour
     [SerializeField] float stunDuration = 3;
     [SerializeField] float attackChance = 0.5f;
     [SerializeField] float maxDistance = 5;
+    [SerializeField] float maxMoveLimit = 3;
     [SerializeField] float projectSpread = 0.5f;
     [SerializeField] Vector2 idleDuration = new Vector2(1, 3);
 
@@ -42,6 +43,7 @@ public class EnemySpider : MonoBehaviour
     private int attackFrameIndex;
     private float attackTimer;
     private float idleTimer;
+    private float moveLimit;
 
     private Vector2 destination;
     private Vector2 spawnPosition;
@@ -63,8 +65,6 @@ public class EnemySpider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(state);
-
         switch (state)
         {
             case State.Idle:
@@ -128,9 +128,10 @@ public class EnemySpider : MonoBehaviour
 
     private void Move()
     {
+        moveLimit -= Time.deltaTime;
         // rb.velocity = (player.transform.position - transform.position).normalized * speed;
         transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
-        if (((Vector2)transform.position - destination).magnitude < 0.1f)
+        if (((Vector2)transform.position - destination).magnitude < 0.1f || moveLimit < 0)
         {
             state = State.Idle;
         }
@@ -144,6 +145,7 @@ public class EnemySpider : MonoBehaviour
         {
             spriteRenderer.color = new Color(1, 1, 1, 1);
             state = State.Moving;
+            moveLimit = maxMoveLimit;
         }
     }
 
@@ -162,6 +164,7 @@ public class EnemySpider : MonoBehaviour
             {
                 attackFrameIndex = 0;
                 state = State.Moving;
+                moveLimit = maxMoveLimit;
                 DetermineDestination();
             }
 
@@ -241,7 +244,7 @@ public class EnemySpider : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (state == State.Dead || state == State.Stunned)
         {
