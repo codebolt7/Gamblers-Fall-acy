@@ -19,7 +19,7 @@ public class BattleUI : MonoBehaviour
     private IMGUIContainer[] abilityCharges = new IMGUIContainer[4];
 
     public bool[] diceVals = {false, false, false, false, false, false, false}; // 0th element is null just so indices match dice num
-    public int[] chargeVals = {0, 0, 0, 0};
+    public int[] chargeVals = {2, 2, 2, 2};
 
     // Sprites
     [SerializeField] private Sprite[] healthNums = new Sprite[9];
@@ -28,12 +28,14 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Sprite[] chargeNums = new Sprite[10];
 
     [SerializeField] private GameObject door;
+    [SerializeField] Player player;
 
     private IMGUIContainer grabbedDie;
     public bool dieGrabbed = false;
     public int grabbedDieVal = 0;
     private float dieShakeTimer = 0f;
     private int abilityNumShake = -1;
+    //private bool[] dice;
 
     public int currentHealthVal = 8;
     private float healthShakeTimer = 0f;
@@ -159,6 +161,7 @@ public class BattleUI : MonoBehaviour
     {
         Debug.Log("hey");
         if (dieGrabbed)
+        {
             if (chargeVals[abilityNum] >= 9) // if ability is fully charged, reject die
             {
                 dieShakeTimer = 0.5f;
@@ -174,9 +177,11 @@ public class BattleUI : MonoBehaviour
                 
                 UpdateAbilities(abilityNum, Mathf.Clamp(chargeVals[abilityNum] + grabbedDieVal, 0, 9));
                 dieGrabbed = false;
+                player.dice[grabbedDieVal - 1] = false;
+                grabbedDieVal = 0;
                 grabbedDie.style.opacity = 0;
             }
-                
+        }     
         
     }
 
@@ -192,6 +197,8 @@ public class BattleUI : MonoBehaviour
                 
             //UpdateAbilities(abilityNum, Mathf.Clamp(chargeVals[abilityNum] + grabbedDieVal, 0, 9));
             dieGrabbed = false;
+            player.dice[grabbedDieVal - 1] = false;
+            grabbedDieVal = 0;
             grabbedDie.style.opacity = 0;
             door.GetComponent<Door>().UpdateDoorCounter(grabbedDieVal);
         }
@@ -259,18 +266,37 @@ public class BattleUI : MonoBehaviour
 
     void Start()
     {
-        
-        UpdateDice(1, true);
-        UpdateDice(2, true);
-        UpdateDice(3, true);
-        UpdateDice(4, true);
-        UpdateDice(5, true);
-        UpdateDice(6, true);
+        //dice = player.dice;
+        // UpdateDice(1, true);
+        // UpdateDice(2, true);
+        // UpdateDice(3, true);
+        // UpdateDice(4, true);
+        // UpdateDice(5, true);
+        // UpdateDice(6, true);
         UpdateAbilities(0, 2);
+        UpdateAbilities(1, 2);
+        UpdateAbilities(2, 2);
+        UpdateAbilities(3, 2);
     }
 
     void Update()
-    {
+    {       
+        int i = 1;
+        foreach(bool die in player.dice){
+            if(grabbedDieVal != i+1){   
+                UpdateDice(i, die);
+            }
+            i++;
+        }
+
+        // i = 0;
+        // foreach(int amDyingOnTheInside in chargeVals)
+        // {
+        //     UpdateAbilities(i, amDyingOnTheInside);
+
+        // }
+        // i++;
+
         // i'm sorry about all these magic numbers
         if (dieGrabbed)
         {

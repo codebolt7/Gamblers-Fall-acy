@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] SpriteRenderer spriteTop;
     [SerializeField] SpriteRenderer spriteBottom;
     [SerializeField] ContactFilter2D attackContactFilter;
+    [SerializeField] BattleUI batUI;
 
     [Header("Stats")]
     [SerializeField] float attackDmg = 1f;
@@ -49,7 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] Sprite[] animShieldFX;
  
     private float hp;
-    private bool[] dice;
+    public bool[] dice;
     bool attacking;
     bool dashing;
     bool casting;
@@ -208,6 +209,7 @@ public class Player : MonoBehaviour
     {
         //Want a 4~frame invulnerable dash that travels 3.5~ in whatever 
         //direction is pressed
+        if(batUI.chargeVals[0] <= 0) yield break;
         dashing = true;
         immunityDuration = dashImmunityDuration;
         StartCoroutine(Immunity());
@@ -216,10 +218,13 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
         rb.velocity = currentVel;
         dashing = false;
+        batUI.chargeVals[0] -= 1;
+        batUI.UpdateAbilities(0, batUI.chargeVals[0]);
     }
 
     private IEnumerator Fireball()
-    {
+    {   
+        if(batUI.chargeVals[1] <= 0) yield break;
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>()); //Gets scrren position, converts to world position
         Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized; // World position minus player position, then normalized
         StartCoroutine(Casting());
@@ -227,12 +232,14 @@ public class Player : MonoBehaviour
         GameObject projectile = Instantiate(fireballProjectile);
         projectile.transform.position = transform.position;
         projectile.GetComponent<FireballProjectile>().Init(relativePos, fireballSpeed, fireballDamage);
+        batUI.chargeVals[1] -= 1;
+        batUI.UpdateAbilities(1, batUI.chargeVals[1]);
         yield break;
     }
 
     private IEnumerator Shockwave()
     {   
-        if (raving) yield break;
+        if (raving || batUI.chargeVals[2] <= 0) yield break;
         raving = true;
         //Debug.Log("shockwave!");
         StartCoroutine(Casting());
@@ -260,6 +267,7 @@ public class Player : MonoBehaviour
                 enemySp.GetDamaged(attackDmg/4, shockwaveKB);
                 Debug.Log("Test");
             }
+
         }
         
         SpriteRenderer shockwaveSR = shockwave.GetComponent<SpriteRenderer>();
@@ -272,11 +280,13 @@ public class Player : MonoBehaviour
 
         shockwave.SetActive(false);
         raving = false;
+        batUI.chargeVals[2] -= 1;
+        batUI.UpdateAbilities(2, batUI.chargeVals[2]);
     }
 
     private IEnumerator Shield()
     {   
-        if(shielded) yield break;
+        if(shielded || batUI.chargeVals[3] <= 0) yield break;
         shielded = true;
         float shieldTimer = 0;
 
@@ -303,6 +313,8 @@ public class Player : MonoBehaviour
 
         shield.SetActive(false);
         shielded = false;
+        batUI.chargeVals[3] -= 1;
+        batUI.UpdateAbilities(3, batUI.chargeVals[3]);
     }
 
     public void GetDamaged(float damage)
