@@ -200,6 +200,68 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+--- !u!1 &745142013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 745142015}
+  - component: {fileID: 745142014}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &745142014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745142013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1255542588
+      Data2: 1077344577
+      Data3: -848182874
+      Data4: -1255985539
+    Path: event:/Music/Menu
+  Event: 
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &745142015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745142013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2072041, y: -0.26323193, z: 13.616281}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977681895
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,19 +335,12 @@ MonoBehaviour:
   - {fileID: -708230938, guid: ae8a687e5ac318d42a09a63fab83c966, type: 3}
   - {fileID: 1920272427, guid: ae8a687e5ac318d42a09a63fab83c966, type: 3}
   tutorialSlideSprites:
-  - {fileID: -1030802311, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: 1584541964, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: 2058829146, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: -721634751, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: 1416923334, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: 1341530041, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  tutorialPageNumSprites:
-  - {fileID: -1114528101, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: 2027422685, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: 959222865, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: -1150404763, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: -1645960496, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
-  - {fileID: -434494602, guid: 33a275e0cddd0044eaabb6589c20a9f6, type: 3}
+  - {fileID: -1303316852, guid: e3eca1a3cf5a32f42aa349ed88075854, type: 3}
+  - {fileID: -724132452, guid: e3eca1a3cf5a32f42aa349ed88075854, type: 3}
+  - {fileID: -776632341, guid: e3eca1a3cf5a32f42aa349ed88075854, type: 3}
+  - {fileID: 1333664289, guid: e3eca1a3cf5a32f42aa349ed88075854, type: 3}
+  - {fileID: -71792782, guid: e3eca1a3cf5a32f42aa349ed88075854, type: 3}
+  - {fileID: 18810311, guid: e3eca1a3cf5a32f42aa349ed88075854, type: 3}
 --- !u!1 &1460159982
 GameObject:
   m_ObjectHideFlags: 0

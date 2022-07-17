@@ -17,11 +17,11 @@ public class MainMenu : MonoBehaviour
     private bool musicSliderHeld = false;
     private bool masterSliderHeld = false;
     private bool tutorialVisible = false;
+    private bool loreSkip = false;
     private int currentTutorialSlide = 0;
 
     [SerializeField] private Sprite[] buttonSprites = new Sprite[10];
     [SerializeField] private Sprite[] tutorialSlideSprites = new Sprite[6];
-    [SerializeField] private Sprite[] tutorialPageNumSprites = new Sprite[6];
 
     private void OnEnable()
     {
@@ -50,6 +50,7 @@ public class MainMenu : MonoBehaviour
         settingsButton.RegisterCallback<MouseDownEvent>(ev => OnSettingsButtonDown());
         creditsButton.RegisterCallback<MouseDownEvent>(ev => OnCreditsButtonDown());
 
+        lore.RegisterCallback<ClickEvent>(ev => SkipLore());
         playButton.RegisterCallback<ClickEvent>(ev => OnPlayButtonClick());
         settingsButton.RegisterCallback<ClickEvent>(ev => OnSettingsButtonClick());
         creditsButton.RegisterCallback<ClickEvent>(ev => OnCreditsButtonClick());
@@ -60,6 +61,11 @@ public class MainMenu : MonoBehaviour
 
         backButton.RegisterCallback<ClickEvent>(ev => IncrementTutorialSlide(-1));
         forwardButton.RegisterCallback<ClickEvent>(ev => IncrementTutorialSlide(1));
+    }
+
+    private void SkipLore()
+    {
+        loreSkip = true;
     }
 
     private void OnPlayButtonDown()
@@ -154,14 +160,13 @@ public class MainMenu : MonoBehaviour
             t = timeElapsed/time;
             t = Mathf.Sin((t * Mathf.PI) / 2);
             lore.style.top = Mathf.Lerp(startVal, finalVal, t);
-            Debug.Log(tutorial.style.top);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
         element.style.top = finalVal;
 
         timeElapsed = 0;
-        while(timeElapsed < 5)
+        while(timeElapsed < 5 && !loreSkip)
         {
             timeElapsed+= Time.deltaTime;
             yield return null;
@@ -174,7 +179,6 @@ public class MainMenu : MonoBehaviour
             t = Mathf.Sin((t * Mathf.PI) / 2);
             tutorial.style.top = Mathf.Lerp(startVal, finalVal, t);
             lore.style.top = Mathf.Lerp(finalVal, -startVal, t);
-            Debug.Log(tutorial.style.top);
             timeElapsed += Time.deltaTime;
             yield return null;
         }
@@ -190,12 +194,11 @@ public class MainMenu : MonoBehaviour
             
         }
         else if (currentTutorialSlide + amount > 5)
-            SceneManager.LoadScene("UI Test");
+            SceneManager.LoadScene("Level 1");
         else
         {
             currentTutorialSlide += amount;
             tutorialSlide.style.backgroundImage = new StyleBackground(tutorialSlideSprites[currentTutorialSlide]);
-            tutorialPageNum.style.backgroundImage = new StyleBackground(tutorialPageNumSprites[currentTutorialSlide]);
             if (currentTutorialSlide == 5)
                 forwardButton.style.backgroundImage = new StyleBackground(buttonSprites[6]);
             else

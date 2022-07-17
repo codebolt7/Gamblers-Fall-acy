@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{094564e4-9d5a-44c9-9f7d-98d1a48e0e43}">
+		<property name="assetPath">
+			<value>menuMaster(2).ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>47.462698412698415</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{20ef7d41-5da3-48c5-bd89-1ebd947eee49}</destination>
+		</relationship>
+	</object>
+</objects>
