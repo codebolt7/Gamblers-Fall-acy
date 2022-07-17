@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField] float shockwaveKB = 1.5f;
     [SerializeField] float hitImmunityDuration = 2;
     [SerializeField] float dashImmunityDuration = 0.1f;
-    [SerializeField] float fortuneImmunityDuration = 2.5f;
+    [SerializeField] float fortuneImmunityDuration = 2.8f;
     [SerializeField] float immunityDuration = 2;
 
     [Header("Object Assignment")]
@@ -255,23 +255,22 @@ public class Player : MonoBehaviour
         immunityDuration = fortuneImmunityDuration;
         StartCoroutine(Casting());
 
-        shockwave.SetActive(true);
+        shield.SetActive(true);
         yield return new WaitForSeconds(frameDelay);
         StartCoroutine(Immunity());
 
         SpriteRenderer shieldSR = shield.GetComponent<SpriteRenderer>();
 
-
-        while(shieldTimer <= fortuneImmunityDuration)
+        while(shieldTimer <= fortuneImmunityDuration - 0.125f)
         {
             foreach (Sprite frame in animShieldFX)
             {   
                 shieldSR.sprite = frame;
                 yield return new WaitForSeconds(frameDelay);
+                shieldTimer += frameDelay;
             }
-            shieldTimer += Time.deltaTime;
             Debug.Log(shieldTimer);
-            Debug.Log(Time.timeScale);
+            //Debug.Log(Time.timeScale);
         }
 
         shield.SetActive(false);
@@ -287,7 +286,8 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator Immunity()
-    {
+    {   
+        //if(immunity) yield break;
         immunity = true;
         spriteTop.color = new Color(1, 1, 1, 0.5f);
         spriteBottom.color = new Color(1, 1, 1, 0.5f);
