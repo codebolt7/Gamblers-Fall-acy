@@ -271,6 +271,7 @@ public class Player : MonoBehaviour
             }
             shieldTimer += Time.deltaTime;
             Debug.Log(shieldTimer);
+            Debug.Log(Time.timeScale);
         }
 
         shield.SetActive(false);
