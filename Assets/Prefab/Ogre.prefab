@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7535bd51391da88409ec7e31d443470e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  die: {fileID: 0}
+  rb: {fileID: 8735283052955566577}
+  die: {fileID: 4033616828757410027, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
   speed: 0.25
   attackDmg: 1
   maxHP: 10
@@ -119,6 +119,7 @@ MonoBehaviour:
   - {fileID: 480430607, guid: bbaa6f4cc0e781640a8d7afc779ea85d, type: 3}
   - {fileID: 1414644417, guid: bbaa6f4cc0e781640a8d7afc779ea85d, type: 3}
   - {fileID: -818608087, guid: bbaa6f4cc0e781640a8d7afc779ea85d, type: 3}
+  ogre: 1
 --- !u!50 &8735283052955566577
 Rigidbody2D:
   serializedVersion: 4

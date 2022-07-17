@@ -34,6 +34,7 @@ public class EnemyBat : MonoBehaviour
     private float hp;
     private float stunTimer;
     private bool spawned;
+    [SerializeField] bool ogre;
 
     // Start is called before the first frame update
     void Start()
@@ -102,9 +103,26 @@ public class EnemyBat : MonoBehaviour
     private void Dead()
     {   
         if(!spawned){
-            GameObject deathyDie = Instantiate(die);
-            deathyDie.transform.position = transform.position;
-            deathyDie.transform.SetParent(transform.parent);
+            if(ogre)
+            {
+                GameObject deathyDieExtra = Instantiate(die);
+                deathyDieExtra.transform.position = (transform.position + Vector3.right/2);
+                deathyDieExtra.transform.SetParent(transform.parent);  
+
+                GameObject deathyDie = Instantiate(die);
+                deathyDie.transform.position = (transform.position - Vector3.right/2);
+                deathyDie.transform.SetParent(transform.parent);  
+                
+            }
+            else
+            {
+                GameObject deathyDie = Instantiate(die);
+                deathyDie.transform.position = transform.position;
+                deathyDie.transform.SetParent(transform.parent);                
+
+            }
+
+            
             spawned = true;
         }
 

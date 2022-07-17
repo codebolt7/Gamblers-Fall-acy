@@ -70,10 +70,16 @@ public class FireballProjectile : MonoBehaviour
         }
         else if (collision.TryGetComponent(out EnemySkeleton enemyS))
         {
-            enemyS.GetDamaged(attackDmg);
+            enemyS.GetDamaged(attackDmg, 1);
             //Need to add knockback function
             Debug.Log("Test");
-        }else if (collision.gameObject.layer == 6){
+        }
+        else if (collision.TryGetComponent(out EnemySpider enemySp))
+        {
+            enemySp.GetDamaged(attackDmg, 1);
+            Debug.Log("Test");
+        }
+        else if (collision.gameObject.layer == 6){
             Destroy(gameObject);
         }
 

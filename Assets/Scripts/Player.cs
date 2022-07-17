@@ -178,12 +178,12 @@ public class Player : MonoBehaviour
                     }
                     else if (collider.TryGetComponent(out EnemySkeleton enemyS))
                     {
-                        enemyS.GetDamaged(attackDmg);
+                        enemyS.GetDamaged(attackDmg, 1);
                         Debug.Log("Test");
                     }
                     else if (collider.TryGetComponent(out EnemySpider enemySp))
                     {
-                        enemySp.GetDamaged(attackDmg);
+                        enemySp.GetDamaged(attackDmg, 1);
                         Debug.Log("Test");
                     }
                 }
@@ -249,8 +249,13 @@ public class Player : MonoBehaviour
             }
             else if (collider.TryGetComponent(out EnemySkeleton enemyS))
             {
-                enemyS.GetDamaged(attackDmg/4);
+                enemyS.GetDamaged(attackDmg/4, shockwaveKB);
                 //Need to add knockback function
+                Debug.Log("Test");
+            }
+            else if (collider.TryGetComponent(out EnemySpider enemySp))
+            {
+                enemySp.GetDamaged(attackDmg/4, shockwaveKB);
                 Debug.Log("Test");
             }
         }

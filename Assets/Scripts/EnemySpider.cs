@@ -19,6 +19,7 @@ public class EnemySpider : MonoBehaviour
     GameObject player;
     SpriteRenderer spriteRenderer;
     [SerializeField] GameObject boneProjectile;
+    [SerializeField] GameObject die;
 
     [Header("Stats")]
     [SerializeField] float speed = 1;
@@ -47,6 +48,7 @@ public class EnemySpider : MonoBehaviour
 
     private float hp;
     private float stunTimer;
+    private bool spawned;
 
     // Start is called before the first frame update
     void Start()
@@ -83,15 +85,16 @@ public class EnemySpider : MonoBehaviour
         }
     }
 
-    public void GetDamaged(float damage)
+    public void GetDamaged(float damage, float knockbackMultiplier)
     {
         hp -= damage;
         Debug.Log(gameObject.name + "'s HP: " + hp);
-        stunTimer = stunDuration;
+        stunTimer = state == State.Dead ? stunDuration*4 : stunDuration;
+
         state = State.Stunned;
         spriteRenderer.color = new Color(1, 1, 1, 0.5f);
         rb.velocity = Vector2.zero;
-        rb.AddForceAtPosition((transform.position - player.transform.position).normalized * pushbackForce, player.transform.position);
+        rb.AddForceAtPosition((transform.position - player.transform.position).normalized * pushbackForce*knockbackMultiplier, player.transform.position);
         if (hp <= 0)
         {
             spriteRenderer.color = new Color(1, 0f, 0f, 0.25f);
@@ -193,7 +196,15 @@ public class EnemySpider : MonoBehaviour
     }
 
     private void Dead()
-    {
+    {   
+
+        if(!spawned){
+            GameObject deathyDie = Instantiate(die);
+            deathyDie.transform.position = transform.position;
+            deathyDie.transform.SetParent(transform.parent);
+            spawned = true;
+        }
+        
         stunTimer -= Time.deltaTime;
         if (stunTimer < 0)
         {

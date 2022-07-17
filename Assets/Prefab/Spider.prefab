@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5d0130e05655043be2b20918e99e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 6247811922784076917}
   boneProjectile: {fileID: 2720851270026192970, guid: 2389afbabf3b1e14382df50e6450f0c4, type: 3}
+  die: {fileID: 4033616828757410027, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
   speed: 2.5
   attackDmg: 1
   maxHP: 5
