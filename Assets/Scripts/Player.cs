@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject attack;
     [SerializeField] GameObject fireballProjectile;
     [SerializeField] GameObject shockwave;
+    [SerializeField] GameObject shield;
     [SerializeField] SpriteRenderer spriteTop;
     [SerializeField] SpriteRenderer spriteBottom;
     [SerializeField] ContactFilter2D attackContactFilter;
@@ -40,11 +41,17 @@ public class Player : MonoBehaviour
     [SerializeField] Sprite[] animWalkTop;
     [SerializeField] Sprite[] animWalkBottom;
     [SerializeField] Sprite[] animAttackTop;
+    [SerializeField] Sprite[] animCastTop;
     [SerializeField] Sprite[] animSwingFX;
-
+    [SerializeField] Sprite[] animShockwaveFX;
+    [SerializeField] Sprite[] animShieldFX;
+ 
     private float hp;
     bool attacking;
     bool dashing;
+    bool casting;
+    bool raving;
+    bool shielded;
     bool immunity;
 
     void Awake()
@@ -57,6 +64,7 @@ public class Player : MonoBehaviour
         controls.Player.Shield.performed += _ => StartCoroutine(Shield());
         dashing = false;
         attack.transform.SetParent(transform.parent);
+        shockwave.transform.SetParent(transform.parent);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -84,13 +92,15 @@ public class Player : MonoBehaviour
     private void BaseAnimate(Vector2 input)
     {
         walkFrameIndex = input.magnitude > 0.1f ? Mathf.Max(walkFrameIndex, 0) : -1;
+        
+        //if(casting) return;
 
         // Walk
         if (walkFrameIndex >= 0)
         {
             spriteBottom.sprite = animWalkBottom[walkFrameIndex];
             spriteBottom.flipX = input.x > 0;
-            if (!attacking)
+            if (!attacking && !casting)
             {
                 spriteTop.sprite = animWalkTop[walkFrameIndex];
                 spriteTop.flipX = input.x > 0;
@@ -107,7 +117,7 @@ public class Player : MonoBehaviour
         else
         {
             spriteBottom.sprite = animIdleBottom[idleFrameIndex];
-            if (!attacking)
+            if (!attacking && !casting)
             {
                 spriteTop.sprite = animIdleTop[idleFrameIndex];
                 spriteTop.flipX = spriteBottom.flipX;
@@ -189,6 +199,8 @@ public class Player : MonoBehaviour
     {
         Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>()); //Gets scrren position, converts to world position
         Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized; // World position minus player position, then normalized
+        StartCoroutine(Casting());
+        yield return new WaitForSeconds(frameDelay);
         GameObject projectile = Instantiate(fireballProjectile);
         projectile.transform.position = transform.position;
         projectile.GetComponent<FireballProjectile>().Init(relativePos, fireballSpeed, fireballDamage);
@@ -196,8 +208,15 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator Shockwave()
-    {
+    {   
+        if (raving) yield break;
+        raving = true;
         //Debug.Log("shockwave!");
+        StartCoroutine(Casting());
+        shockwave.SetActive(true);
+        shockwave.transform.position = (Vector2)transform.position;
+        yield return new WaitForSeconds(frameDelay);
+        
         List<Collider2D> hit = new List<Collider2D>();
         shockwave.GetComponent<Collider2D>().OverlapCollider(attackContactFilter, hit);
         foreach (Collider2D collider in hit)
@@ -214,14 +233,48 @@ public class Player : MonoBehaviour
                 Debug.Log("Test");
             }
         }
-        yield break;
+        
+        SpriteRenderer shockwaveSR = shockwave.GetComponent<SpriteRenderer>();
+
+        foreach (Sprite frame in animShockwaveFX)
+        {   
+            shockwaveSR.sprite = frame;
+            yield return new WaitForSeconds(frameDelay);
+        }
+
+        shockwave.SetActive(false);
+        raving = false;
     }
 
     private IEnumerator Shield()
-    {
+    {   
+        if(shielded) yield break;
+        shielded = true;
+        float shieldTimer = 0;
+
         immunityDuration = fortuneImmunityDuration;
+        StartCoroutine(Casting());
+
+        shockwave.SetActive(true);
+        yield return new WaitForSeconds(frameDelay);
         StartCoroutine(Immunity());
-        yield return new WaitForSeconds(fortuneImmunityDuration);
+
+        SpriteRenderer shieldSR = shield.GetComponent<SpriteRenderer>();
+
+
+        while(shieldTimer <= fortuneImmunityDuration)
+        {
+            foreach (Sprite frame in animShieldFX)
+            {   
+                shieldSR.sprite = frame;
+                yield return new WaitForSeconds(frameDelay);
+            }
+            shieldTimer += Time.deltaTime;
+            Debug.Log(shieldTimer);
+        }
+
+        shield.SetActive(false);
+        shielded = false;
     }
 
     public void GetDamaged(float damage)
@@ -241,6 +294,24 @@ public class Player : MonoBehaviour
         immunity = false;
         spriteTop.color = new Color(1, 1, 1, 1);
         spriteBottom.color = new Color(1, 1, 1, 1);
+    }
+
+    private IEnumerator Casting()
+    {   
+        //Debug.Log("casting!");
+        if(casting) yield break;
+        casting = true;
+        Vector2 worldPos = Camera.main.ScreenToWorldPoint(controls.Player.MousePosition.ReadValue<Vector2>());
+        Vector2 relativePos = (worldPos - (Vector2)transform.position).normalized;
+
+        spriteTop.flipX = relativePos.x > 0;
+        foreach (Sprite sprit in animCastTop){
+            spriteTop.sprite = sprit;
+            yield return new WaitForSeconds(frameDelay);
+        }
+
+        casting = false;
+
     }
 
     void OnEnable()

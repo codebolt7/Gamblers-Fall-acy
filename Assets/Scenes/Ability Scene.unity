@@ -555,6 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816409736}
+  - component: {fileID: 816409738}
   - component: {fileID: 816409737}
   m_Layer: 0
   m_Name: Shockwave
@@ -591,9 +592,61 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.010425806}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.4
+  m_Radius: 1.5
+--- !u!212 &816409738
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816409735}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 5, y: 5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &943984356
 GameObject:
   m_ObjectHideFlags: 1
@@ -1040,6 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 1214889333}
+  fireballProjectile: {fileID: 1936301660545286025, guid: b71efeb58b8ebc54aa6937287dfa8e65, type: 3}
   shockwave: {fileID: 816409735}
   spriteTop: {fileID: 1300783958}
   spriteBottom: {fileID: 1436775468}
@@ -1063,6 +1117,8 @@ MonoBehaviour:
   attackDistance: 0.75
   dashDuration: 0.1
   dashLength: 3.5
+  fireballSpeed: 10
+  fireballDamage: 1.5
   shockwaveKB: 2
   hitImmunityDuration: 2
   dashImmunityDuration: 0.1
@@ -1094,12 +1150,41 @@ MonoBehaviour:
   - {fileID: 244591021, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
   - {fileID: 51090242, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
   - {fileID: 752988641, guid: 4730a37de0fd85440923511e9ffd51dd, type: 3}
+  animCastTop:
+  - {fileID: -127102171, guid: be2e150faf3ce144baf076b6718f3c9b, type: 3}
+  - {fileID: 1115519537, guid: be2e150faf3ce144baf076b6718f3c9b, type: 3}
+  - {fileID: -1188793909, guid: be2e150faf3ce144baf076b6718f3c9b, type: 3}
+  - {fileID: -727277103, guid: be2e150faf3ce144baf076b6718f3c9b, type: 3}
+  - {fileID: -324671053, guid: be2e150faf3ce144baf076b6718f3c9b, type: 3}
+  - {fileID: -636931242, guid: be2e150faf3ce144baf076b6718f3c9b, type: 3}
   animSwingFX:
   - {fileID: -1302037650, guid: f4c35197a4af4fa41aeaf372867647d8, type: 3}
   - {fileID: 649485685, guid: f4c35197a4af4fa41aeaf372867647d8, type: 3}
   - {fileID: -1431117173, guid: f4c35197a4af4fa41aeaf372867647d8, type: 3}
   - {fileID: -226897013, guid: f4c35197a4af4fa41aeaf372867647d8, type: 3}
   - {fileID: 291371773, guid: f4c35197a4af4fa41aeaf372867647d8, type: 3}
+  animShockwaveFX:
+  - {fileID: 534249203, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: -2012641599, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: 123129484, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: 1665592384, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: -1919013125, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: -997193266, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: 813607116, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: -591398487, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: -508506781, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: -382653363, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  - {fileID: -1553686299, guid: f8bbf210c07bb634d84135204b803a20, type: 3}
+  animShieldFX:
+  - {fileID: 1339663661, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: -1280600820, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: -1264457138, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: 378279381, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: -544623717, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: -862519255, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: 1951404856, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: 2035659181, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
+  - {fileID: 1396216387, guid: 3b2d1f0e606f9b642bf091f334a2ce9e, type: 3}
 --- !u!4 &1230102635
 Transform:
   m_ObjectHideFlags: 0
