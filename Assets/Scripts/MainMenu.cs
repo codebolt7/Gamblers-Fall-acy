@@ -310,6 +310,7 @@ public class MainMenu : MonoBehaviour
         if (masterSliderHeld)
         {
             masterSlider.style.left = Mathf.Clamp(Mouse.current.position.ReadValue().x - 272, 178, 404);
+            Debug.Log(((float) musicSlider.style.left.value.value - 178) / ((404-178)/2));
             master.setVolume((float) (masterSlider.style.left.value.value - 178) / ((404-178)/2));
         }
     }

@@ -232,7 +232,7 @@ public class BattleUI : MonoBehaviour
         {
             if (diceFilled)
                 dice[diceNum].style.backgroundImage = new StyleBackground(diceSprites[diceNum * 2 - 1]);
-            else if (!dieGrabbed)
+            else
                 dice[diceNum].style.backgroundImage = new StyleBackground(diceSprites[diceNum * 2 - 2]);
 
             diceVals[diceNum] = diceFilled;

@@ -407,9 +407,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 552833654}
+    - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
       propertyPath: battleUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 493397270}
     - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
       propertyPath: doorCost
       value: 21
@@ -1459,6 +1463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d615bec2778894ea18931576075176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &493397270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7095081232583477112, guid: 5748ad2b91f3b0f4ba95110d667fbf8c, type: 3}
+  m_PrefabInstance: {fileID: 1642897991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &549258833
 GameObject:
   m_ObjectHideFlags: 3
@@ -1993,7 +2002,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7095081232583477113, guid: 5748ad2b91f3b0f4ba95110d667fbf8c, type: 3}
   m_PrefabInstance: {fileID: 1642897991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 493397270}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6730e4f5917cf7a48b144fffe7c2d672, type: 3}

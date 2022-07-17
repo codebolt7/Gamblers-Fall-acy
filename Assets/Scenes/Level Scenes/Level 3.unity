@@ -840,9 +840,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 1314772691}
+    - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
       propertyPath: battleUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 160133916}
     - target: {fileID: 7940567550914826769, guid: 59ef378b189708847b8217768b7ad39a, type: 3}
       propertyPath: finalDoor
       value: 1
@@ -911,7 +915,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7095081232583477113, guid: 5748ad2b91f3b0f4ba95110d667fbf8c, type: 3}
   m_PrefabInstance: {fileID: 160133915}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 160133916}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6730e4f5917cf7a48b144fffe7c2d672, type: 3}
@@ -986,6 +990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5748ad2b91f3b0f4ba95110d667fbf8c, type: 3}
+--- !u!1 &160133916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7095081232583477112, guid: 5748ad2b91f3b0f4ba95110d667fbf8c, type: 3}
+  m_PrefabInstance: {fileID: 160133915}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &484042332
 GameObject:
   m_ObjectHideFlags: 0
