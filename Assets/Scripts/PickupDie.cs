@@ -18,6 +18,8 @@ public class PickupDie : MonoBehaviour
     private SpriteRenderer SR;
     private int temp;
     public Number num;
+    private float dieDecay;
+    private float timer = 0;
 
 
     void Awake(){
@@ -29,14 +31,19 @@ public class PickupDie : MonoBehaviour
     void Start()
     {
         setNum(temp);
-
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if(timer >= 2){
+            SR.color = new Color(1, 1, 1, SR.color.a - (timer/400)*(SR.color.a));
+        }
+        if(timer >= 7)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void setNum(int tempNum)

@@ -39,7 +39,7 @@ public class BoneProjectile : MonoBehaviour
         if (collision.gameObject == player)
         {
             Debug.Log("Enemy HIT!");
-            player.GetComponent<Player>().GetDamaged(attackDmg);
+            player.GetComponent<Player>().GetDamaged(attackDmg/2);
         }else if (collision.gameObject.layer == 6)
         {
             Destroy(gameObject);

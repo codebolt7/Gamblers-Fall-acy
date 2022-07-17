@@ -101,8 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8735283052955566577}
   die: {fileID: 4033616828757410027, guid: 5d392deecaec3724bb0d6be128686110, type: 3}
-  speed: 0.25
-  attackDmg: 1
+  speed: 0.75
+  attackDmg: 2
   maxHP: 10
   pushbackForce: 100
   stunDuration: 0.25
